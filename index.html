@@ -6,16 +6,133 @@
     <title>MMSS Exam System</title>
     
     <script src="questions.js"></script>
-    <script src="biology.js"></script><script src="chemistry.js"></script><script src="physics.js"></script>
-    <script src="history.js"></script><script src="geography.js"></script><script src="economics.js"></script>
-    <script src="english.js"></script><script src="maths.js"></script>
-    <script src="biology_model.js"></script><script src="chemistry_model.js"></script><script src="physics_model.js"></script>
-    <script src="history_model.js"></script><script src="geography_model.js"></script><script src="economics_model.js"></script>
-    <script src="english_model.js"></script><script src="maths_model.js"></script><script src="aptitude_model.js"></script>
-    
     <script src="pdf.min.js"></script>
-    <script src="compromise-sentences.js"></script>
+    <script src="pdf.worker.min.js"></script>
     <script src="string-similarity.js"></script>
+    <script src="localforage.min.js"></script>
+
+    <script src="biology.js"></script>
+    <script src="chemistry.js"></script>
+    <script src="physics.js"></script>
+    <script src="maths.js"></script>
+    <script src="english.js"></script>
+    <script src="history.js"></script>
+    <script src="geography.js"></script>
+    <script src="economics.js"></script>
+
+    <script src="biology_model.js"></script>
+    <script src="chemistry_model.js"></script>
+    <script src="physics_model.js"></script>
+    <script src="maths_model.js"></script>
+    <script src="english_model.js"></script>
+    <script src="history_model.js"></script>
+    <script src="geography_model.js"></script>
+    <script src="economics_model.js"></script>
+    <script src="aptitude_model.js"></script>
+
+    <script src="compromise.js"></script>
+    <script src="compromise (1).js"></script>
+    <script src="compromise-sentences.js"></script>
+    <script src="fuse.min.js"></script>
+    <script src="fuzzysort.txt"></script> 
+    <script src="index.min.js"></script>
+
+    <script src="math.js"></script>
+    <script src="katex.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script src="tesseract.min.js"></script>
+
+    <script src="tf.min.js"></script>
+    <script src="synaptic.min.js"></script>
+    <script src="neataptic.min.js"></script>
+    <script src="transformers.min.js"></script>
+    <script src="sql-wasm.js"></script>
+
+    <style>
+        :root {
+            --bg: #0b1329; 
+            --card-bg: transparent; 
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+            --correct: #10b981;
+            --wrong: #ef4444;
+            --overlay-bg: rgba(0,0,0,0);
+            --nat-grad: linear-gradient(135deg, #00b4d8, #0077b6);
+            --soc-grad: linear-gradient(135deg, #f39c12, #d35400);
+            --mod-grad: linear-gradient(135deg, #7209b7, #3f37c9);
+            --ai-grad: linear-gradient(135deg, #ec4899, #8b5cf6);
+            --my-grad: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .light-theme {
+            --bg: #f8fafc;
+            --card-bg: transparent;
+            --text: #0f172a;
+            --accent: #0284c7;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            box-shadow: none !important; 
+            border: none !important; 
+            outline: none !important; 
+        }
+        
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--overlay-bg);
+            pointer-events: none;
+            z-index: 99999;
+            transition: background 0.3s ease;
+        }
+
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 4vh 4vw; 
+            overflow-x: hidden; 
+            transition: background 0.3s, color 0.3s; 
+        }
+        
+        .page { 
+            display: none; 
+            width: 100%; 
+            max-width: 100%; 
+            min-height: 90vh;
+            animation: fadeIn 0.4s ease; 
+        }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .card { 
+            background: var(--card-bg) !important; 
+            backdrop-filter: none !important;
+            border-radius: 0px !important; 
+            padding: 2vh 0; 
+            margin-bottom: 2vh; 
+            width: 100%; 
+        }
+        h1 { 
+            font-size: calc(26px + 1.5vw); 
+            margin-bottom: 2vh; 
+            font-weight: 700; 
+            text-align: center; 
+            color: #ffffff; 
+        }
+        .light-theme h1 { color: #0f172a; }
+        h2 { font-size: calc(22px + 1vw); margin-bottom: 3vh; font-weight: 600; text-align: center; }
+        h3 { font-size: calc(18px + 0.8vw); margin-bottom: 2vh; font-weight: 600; text-align: center; }
+    </style>
+</head>
 
     <style>
         :root {
