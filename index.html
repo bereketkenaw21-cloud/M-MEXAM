@@ -50,94 +50,6 @@
 
     <style>
         :root {
-
-            --bg: #0b1329; 
-            --card-bg: transparent; 
-            --accent: #38bdf8;
-            --text: #f1f5f9;
-            --correct: #10b981;
-            --wrong: #ef4444;
-            --overlay-bg: rgba(0,0,0,0);
-            --nat-grad: linear-gradient(135deg, #00b4d8, #0077b6);
-            --soc-grad: linear-gradient(135deg, #f39c12, #d35400);
-            --mod-grad: linear-gradient(135deg, #7209b7, #3f37c9);
-            --ai-grad: linear-gradient(135deg, #ec4899, #8b5cf6);
-            --my-grad: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        
-        .light-theme {
-            --bg: #f8fafc;
-            --card-bg: transparent;
-            --text: #0f172a;
-            --accent: #0284c7;
-        }
-
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            box-shadow: none !important; 
-            border: none !important; 
-            outline: none !important; 
-        }
-        
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: var(--overlay-bg);
-            pointer-events: none;
-            z-index: 99999;
-            transition: background 0.3s ease;
-        }
-
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            min-height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-start; 
-            padding: 4vh 4vw; 
-            overflow-x: hidden; 
-            transition: background 0.3s, color 0.3s; 
-        }
-        
-        .page { 
-            display: none; 
-            width: 100%; 
-            max-width: 100%; 
-            min-height: 90vh;
-            animation: fadeIn 0.4s ease; 
-        }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .card { 
-            background: var(--card-bg) !important; 
-            backdrop-filter: none !important;
-            border-radius: 0px !important; 
-            padding: 2vh 0; 
-            margin-bottom: 2vh; 
-            width: 100%; 
-        }
-        h1 { 
-            font-size: calc(26px + 1.5vw); 
-            margin-bottom: 2vh; 
-            font-weight: 700; 
-            text-align: center; 
-            color: #ffffff; 
-        }
-        .light-theme h1 { color: #0f172a; }
-        h2 { font-size: calc(22px + 1vw); margin-bottom: 3vh; font-weight: 600; text-align: center; }
-        h3 { font-size: calc(18px + 0.8vw); margin-bottom: 2vh; font-weight: 600; text-align: center; }
-    </style>
-</head>
-
-    <style>
-        :root {
             --bg: #0b1329; 
             --card-bg: transparent; 
             --accent: #38bdf8;
@@ -400,8 +312,7 @@
             
             <div style="display: flex; flex-direction: column; gap: 2vh; text-align: left;">
                 <div>
-                    <label style="font-weight: 600;" id="lbl-sname">ሙሉ ስም (Full Name)</label>
-                    <input type="text" id="stud-name" placeholder="ለምሳሌ፡ በረከት">
+                    <label style="font-weight: 600;" id="lbl-sname">ሙሉ ስም (Full Name)</label> <input type="text" id="stud-name" placeholder="ለምሳሌ፡ በረከት">
                 </div>
                 <div>
                     <label style="font-weight: 600;" id="lbl-sgrade">ክፍል (Grade)</label>
@@ -418,12 +329,10 @@
                     </select>
                 </div>
                 <div>
-                    <label style="font-weight: 600;" id="lbl-starget">የምታቅደው/የምትጠብቀው ውጤት (Target Score)</label>
-                    <input type="number" id="stud-target" placeholder="ለምሳሌ፡ 600">
+                    <label style="font-weight: 600;" id="lbl-starget">የምታቅደው/የምትጠብቀው ውጤት (Target Score)</label> <input type="number" id="stud-target" placeholder="ለምሳሌ፡ 600">
                 </div>
                 <div>
-                    <label style="font-weight: 600;" id="lbl-svision">የወደፊት ትልቅ ራዕይህ (Your Ultimate Vision)</label>
-                    <textarea id="stud-vision" rows="3" placeholder="ለምሳሌ፡ የሳይበር ደህንነት ባለሙያ መሆን..."></textarea>
+                    <label style="font-weight: 600;" id="lbl-svision">የወደፊት ትልቅ ራዕይህ (Your Ultimate Vision)</label> <textarea id="stud-vision" rows="3" placeholder="ለምሳሌ፡ የሳይበር ደህንነት ባለሙያ መሆን..."></textarea>
                 </div>
                 <button class="btn" onclick="saveStudentProfile()" style="background: var(--my-grad); margin-top: 2vh;" id="setup-save-btn">መረጃዬን መዝግብና ወደ ዳሽቦርድ እለፍ</button>
             </div>
@@ -501,27 +410,45 @@
             </div>
 
             <input type="file" id="customPdfFile" accept="application/pdf" style="margin-bottom:3vh; display:block; width:100%; color:var(--text); cursor: pointer;">
-
+            
             <div style="margin-bottom: 3vh; max-width: 600px;">
                 <label id="pdf-lbl-diff">የጥያቄ ክብደት፦</label>
                 <select id="customDifficulty">
-                    <option value="20" id="opt-easy">ቀላል (Easy)</option>
-                    <option value="50" id="opt-med" selected>መካከለኛ (Medium)</option>
-                    <option value="80" id="opt-hard">ከበድ ያለ (Hard)</option>
+                    <option value="easy">ቀላል (Easy)</option>
+                    <option value="medium" selected>መካከለኛ (Medium)</option>
+                    <option value="hard">ከበድ ያለ (Hard)</option>
+                    <option value="expert">የላቀ ባለሙያ (Expert)</option>
                 </select>
             </div>
 
             <div style="margin-bottom: 3vh; max-width: 600px;">
-                <label id="pdf-lbl-count">የጥያቄ ብዛት (ዝም ካሉት 100 ይሆናል)፦</label>
-                <input type="number" id="pdfQCount" placeholder="100" min="5" max="100">
+                <label id="pdf-lbl-bloom">የብሉም ታክሶኖሚ ደረጃ (Bloom's Taxonomy)፦</label>
+                <select id="customBloomLevel">
+                    <option value="remember">ማስታወስ (Remembering)</option>
+                    <option value="understand" selected>መረዳት (Understanding)</option>
+                    <option value="apply">መትግበር (Applying)</option>
+                    <option value="analyze">መተንተን (Analyzing)</option>
+                    <option value="evaluate">መገምገም (Evaluating)</option>
+                    <option value="create">መፍጠር (Creating)</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 3vh; max-width: 600px;">
+                <label id="pdf-lbl-count">የጥያቄ ብዛት፦</label>
+                <input type="number" id="pdfQCount" placeholder="10" min="1" max="100" value="10">
             </div>
 
             <div style="margin-bottom: 4vh; max-width: 600px;">
                 <label id="pdf-lbl-mode">ከየትኛው ምዕራፍ ክልል ይውጣ? (Chapter Range)፦</label>
                 <div style="display:flex; gap:15px; margin-top:1vh;">
-                    <input type="number" id="pdfStartChapter" placeholder="2" min="1" style="margin-top:0;">
-                    <input type="number" id="pdfEndChapter" placeholder="5" min="1" style="margin-top:0;">
+                    <input type="number" id="pdfStartChapter" placeholder="የመጀመሪያ ምዕራፍ" min="1" style="margin-top:0;">
+                    <input type="number" id="pdfEndChapter" placeholder="የመጨረሻ ምዕራፍ" min="1" style="margin-top:0;">
                 </div>
+            </div>
+
+            <div style="margin-bottom: 4vh; max-width: 600px; padding:20px; background:rgba(255,255,255,0.02); border-radius:10px;">
+                <label style="color:var(--accent); font-weight:bold; display:block; margin-bottom:10px;">📷 የፎቶ OCR ጥያቄ መፍጠሪያ (Image OCR Engine)</label>
+                <input type="file" id="ocrImageFile" accept="image/*" style="color:var(--text); cursor:pointer;">
             </div>
 
             <button onclick="processPdfExam()" class="btn" style="background:var(--my-grad); width:100%; max-width: 600px;" id="pdf-gen-btn">✨ ፈተና አውጣና በቋሚነት አስቀምጥ</button>
@@ -533,10 +460,12 @@
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4vh;">
                     <h3 id="exam-title-txt" style="color: var(--accent);">ፈተና</h3>
-                    <span id="progress-txt" style="font-weight: bold; color: #94a3b8; font-size: calc(15px + 0.2vw);">ጥያቄ 1 / 100</span>
+                    <span id="progress-txt" style="font-weight: bold; color: #94a3b8; font-size: calc(15px + 0.2vw);">ጥያቄ 1</span>
                 </div>
                 <h2 id="q-text" style="text-align: left; font-size: calc(19px + 0.4vw); line-height: 1.6; margin-bottom: 5vh; min-height: 100px; font-weight: 500;">ጥያቄ እዚህ ጋር ይወጣል...</h2>
+                
                 <div class="opt-container" id="opt-box"></div>
+                
                 <div style="display: flex; justify-content: space-between; margin-top: 6vh;">
                     <button class="btn" onclick="prevQ()" style="background: rgba(255,255,255,0.1); padding: 2vh 3vw;" id="btn-prev">← የኋላ</button>
                     <button class="btn" onclick="submitExam()" style="background: #ef4444; padding: 2vh 3vw;" id="btn-finish">ፈተናውን ጨርስ</button>
@@ -544,7 +473,7 @@
                 </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 3vh;">
-                <div id="timer-box">02:00:00</div>
+                <div id="timer-box">00:00:00</div>
                 <div class="card" style="padding: 0;">
                     <h4 style="margin-bottom: 2vh; font-size: calc(14px + 0.2vw); color: #94a3b8; text-align: center; letter-spacing: 1px;" id="nav-grid-title">የጥያቄዎች ማውጫ</h4>
                     <div class="q-nav-grid" id="dot-grid"></div>
@@ -554,957 +483,878 @@
     </div>
 
     <div class="page" id="p-result">
-        <div class="card" style="max-width: 700px; margin: 4vh auto 0 auto; text-align: center;">
-            <div style="width: 90px; height: 90px; background: rgba(16,185,129,0.1); border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 45px; color: var(--correct); margin-bottom: 4vh;">✓</div>
-            <h2 id="res-title">የፈተና ውጤት ማጠቃለያ</h2>
-            <div style="font-size: calc(45px + 2vw); font-weight: bold; color: var(--accent); margin: 4vh 0;" id="score-txt">0 / 0</div>
-            <p style="color: #94a3b8; margin-bottom: 5vh; line-height: 1.6; font-size: calc(15px + 0.2vw);" id="res-subtitle">ፈተናውን በተሳካ ሁኔታ አጠናቀዋል። ከታች ያለውን ቁልፍ በመንካት የእያንዳንዱን ጥያቄ ትክክለኛ መልስ ማየት ይችላሉ።</p>
-            <div style="display: flex; flex-direction: column; gap: 2.5vh; width: 100%; max-width: 450px; margin: 0 auto;">
-                <button class="btn" onclick="showReview()" style="background: var(--nat-grad);" id="res-rev-btn">የመልስ ማብራሪያዎችን ይዩ</button>
-                <button class="btn" onclick="loadAIAnalytics()" style="background: var(--ai-grad);" id="res-ai-btn">🧠 የ AI ትንተና እና ምክር እይ</button>
-                <button class="btn" onclick="nav('p-gateway')" style="background: rgba(255,255,255,0.1);" id="res-home-btn">ወደ ዋናው ገጽ ተመለስ</button>
+        <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <h2 id="res-title" style="color: var(--accent);">የፈተና ውጤት ማጠቃለያ</h2>
+            <div style="font-size: calc(45px + 2vw); font-weight: 900; color: var(--accent); margin: 4vh 0;" id="score-badge">0 / 0</div>
+            <p id="res-percent" style="font-size: calc(18px + 0.5vw); font-weight: bold; margin-bottom: 1vh;">0%</p>
+            <p id="res-time" style="color: #94a3b8; margin-bottom: 5vh; font-size: 15px;">የፈጀው ጊዜ፦ 0 ደቂቃ</p>
+            
+            <div style="display: flex; gap: 3.5vh; justify-content: center; width: 100%;">
+                <button class="btn" onclick="nav('p-gateway')" style="background: rgba(255,255,255,0.08); width: 50%;" id="res-home-btn">ወደ ዋና ገጽ</button>
+                <button class="btn" onclick="loadReviewPage()" style="background: var(--nat-grad); width: 50%;" id="res-rev-btn">መልሶችን ከማብራሪያ ጋር እይ</button>
             </div>
         </div>
     </div>
 
     <div class="page" id="p-review">
         <div class="card">
-            <h2 id="rev-title">የመልስ ማረጋገጫና ክለሳ</h2>
-            <div id="review-list" style="margin-top: 4vh; max-height: 65vh; overflow-y: auto; padding-right: 15px;"></div>
+            <h2 id="rev-title-hdr" style="margin-bottom: 4vh; color: var(--accent);">የጥያቄዎች ማስተካከያና ዝርዝር ማብራሪያ</h2>
+            <div id="review-list-container"></div>
+            <div style="text-align: center; margin-top: 5vh;">
+                <button class="btn" onclick="nav('p-gateway')" style="background: var(--nat-grad); width: 100%; max-width: 400px;" id="rev-close-btn">ወደ ዋና ገጽ ተመለስ</button>
+            </div>
         </div>
     </div>
 
     <div class="page" id="p-analytics">
         <div class="card">
-            <h2 style="color: #8b5cf6; text-align:center; margin-bottom:1vh;" id="ai-dash-title">🧠 AI Personal Coach & Analytics</h2>
-            <p style="color: #94a3b8; font-size:16px; text-align:center; margin-bottom:4vh;" id="ai-dash-sub">ያለ ኢንተርኔት በራስ-ሰር የሚሰራ ሙሉ የአፈጻጸም ትንተና ዳሽቦርድ</p>
+            <h2 id="coach-title" style="color:#fbbf24; margin-bottom:1vh;">🧠 AI COACH & PERFORMANCE ANALYTICS</h2>
+            <p style="text-align:center; color:#94a3b8; margin-bottom:4vh;" id="coach-sub">ባደረግካቸው ፈተናዎች መሰረት የእውቀት ደረጃህን በራስ-ሰር የሚመረምር ስማርት ሞተር</p>
             
-            <div style="width:100%; max-width:1000px; margin: 0 auto;">
-                <div class="analytics-box" style="background: rgba(139, 92, 246, 0.12); border-left: 6px solid #8b5cf6 !important;">
-                    <h3 style="color: #c084fc; text-align:left; margin-bottom:1.5vh; font-size:20px;" id="ai-coach-lbl">🤖 AI Study Coach መልእክት፦</h3>
-                    <p id="ai-coach-msg" style="font-size:18px; line-height:1.6;">የመጀመሪያውን ፈተና ስትጨርስ እዚህ ጋር ሙሉ ትንተና እሰጥሃለሁ!</p>
+            <div class="grid">
+                <div class="analytics-box">
+                    <h3 style="text-align:left; color:var(--accent); margin-bottom:2vh;" id="an-lbl-ov">አጠቃላይ ሁኔታ</h3>
+                    <p id="an-p-taken">የተወሰዱ ፈተናዎች፦ <b id="stat-total-exams">0</b></p>
+                    <p id="an-p-avg">አማካኝ ውጤት፦ <b id="stat-avg-score">0%</b></p>
                 </div>
+                <div class="analytics-box">
+                    <h3 style="text-align:left; color:#10b981; margin-bottom:2vh;" id="an-lbl-str">ጠንካራ ጎኖች</h3>
+                    <p id="stat-strong-subjects">ገና ዳታ አልተሰበሰበም...</p>
+                </div>
+                <div class="analytics-box">
+                    <h3 style="text-align:left; color:#ef4444; margin-bottom:2vh;" id="an-lbl-wk">ደካማ ጎኖች</h3>
+                    <p id="stat-weak-subjects">ገና ዳታ አልተሰበሰበም...</p>
+                </div>
+            </div>
 
-                <div class="analytics-box" style="border-left: 6px solid #38bdf8 !important; background: rgba(56, 189, 248, 0.05);">
-                    <h3 style="color: #38bdf8; text-align:left; margin-bottom:1.5vh; font-size:19px;" id="ai-history-lbl">📈 የእውነተኛ ውጤት እድገት ንፅፅር (Real Progress)</h3>
-                    <div id="ai-progress-history-list" style="font-size:16px; line-height:1.6; color:#cbd5e1;">እስካሁን ምንም ንፅፅር አልተሰራም። ቢያንስ ሁለት ፈተናዎችን ይሞክሩ።</div>
+            <div class="analytics-box" style="margin-top:4vh; border:1px dashed var(--accent) !important; text-align:center;">
+                <h3 style="color:var(--text); margin-bottom:15px;">💾 የፈተናዎች ኤክስፖርት ማዕከል (Advanced Export System)</h3>
+                <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn" onclick="triggerActivePaperExport('pdf')" style="background:var(--wrong); font-size:14px; padding:1.5vh 3vw;">Export as PDF Print Layout</button>
+                    <button class="btn" onclick="triggerActivePaperExport('docx')" style="background:var(--accent); font-size:14px; padding:1.5vh 3vw; color:#0b1329;">Export as Word Local Blob</button>
+                    <button class="btn" onclick="triggerActivePaperExport('txt')" style="background:var(--my-grad); font-size:14px; padding:1.5vh 3vw;">Export as TXT Text File</button>
                 </div>
+            </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3vh; margin-bottom: 3vh;">
-                    <div class="analytics-box" style="border-left: 6px solid var(--wrong) !important; margin-bottom:0;">
-                        <h3 style="color: var(--wrong); text-align:left; margin-bottom:1.5vh; font-size:19px;" id="ai-weak-lbl">🔍 የድክመት መለያ (Weakness Detection)</h3>
-                        <div id="ai-weak-list" style="font-size:16px; line-height:1.6; color:#cbd5e1;">እስካሁን ምንም የተመዘገበ ድክመት የለም። ፈተናዎችን ስትሰራ እዚህ ይዘረዘራሉ።</div>
-                    </div>
-                    <div class="analytics-box" style="border-left: 6px solid var(--correct) !important; margin-bottom:0;">
-                        <h3 style="color: var(--correct); text-align:left; margin-bottom:1.5vh; font-size:19px;" id="ai-career-lbl">🎯 የወደፊት ሙያ አመላካች (Career Finder)</h3>
-                        <p id="ai-career-txt" style="font-size:16px; line-height:1.6; color:#cbd5e1;">ተጨማሪ የፈተና ውጤቶችህን በማጥናት የተሻለውን የስራ ዘርፍ እዚህ እጠቁማለሁ።</p>
-                    </div>
-                </div>
-
-                <div class="analytics-box" style="border-left: 6px solid #fbbf24 !important;">
-                    <h3 style="color: #fbbf24; text-align:left; margin-bottom:1.5vh; font-size:19px;" id="ai-plan-lbl">📅 ብጁ የ 7 ቀን የጥናት እቅድ (Personalized Study Plan)</h3>
-                    <div id="ai-study-table" style="font-size:16px; line-height:1.6; color:#cbd5e1;">የመጨረሻ ፈተናህን መሰረት ያደረገ ሳምንታዊ የጥናት ሰሌዳ እዚህ ይዘጋጃል።</div>
-                </div>
+            <div class="analytics-box" style="margin-top: 4vh; background: rgba(251,191,36,0.03); border: 1px solid rgba(251,191,36,0.15) !important;">
+                <h3 style="text-align:left; color:#fbbf24; margin-bottom:2vh;" id="an-lbl-plan">🎯 የ AI መማሪያ እና የሪሜዲያል የጊዜ ሰሌዳ እቅድ (Study Schedule Planner)</h3>
+                <div id="ai-study-table">የተመደበ የጊዜ ሰሌዳ እቅድ የለም።</div>
             </div>
         </div>
     </div>
 
+
     <script>
-        initDB();
+        // 1. Smart Question & Database State Setup
+        let EXAM_SUITE_STATE = {
+            activeQuestions: [],
+            generatedPapers: [],
+            statistics: { totalGenerated: 0, difficultyDist: { easy: 0, medium: 0, hard: 0, expert: 0 }, chapters: {} },
+            currentLanguage: 'am', // am, en
+            pipeline: null,
+            pdfTextStore: ""
+        };
 
-        let curStr = '', curSub = '', examSet = [], userAns = [], qIdx = 0, timer = null, isModel = false;
-        let isCustomPdfMode = false;
-        let currentLanguage = 'am';
-        let activeSelectedFolder = 'Natural'; 
+        // 13. Offline AI Upgrade (Transformers.js Local Initialization)
+        async function initOfflineAIEngine() {
+            console.log("Initializing Transformers.js & ONNX Runtime Web...");
+            try {
+                if (typeof env !== 'undefined') {
+                    env.allowLocalModels = true;
+                    env.allowRemoteModels = false; // 100% Offline Cache Engine
+                }
+                if (typeof pipeline === 'function') {
+                    EXAM_SUITE_STATE.pipeline = await pipeline('text-generation', 'Xenova/all-MiniLM-L6-v2');
+                    console.log("Offline MiniLM Model cached and ready.");
+                }
+            } catch (err) {
+                console.warn("AI Pipeline initialized in rule-based template mode: ", err.message);
+            }
+        }
 
-        let pageHistory = [];
+        // 6. Bloom's Taxonomy Templates
+        const BLOOMS_TEMPLATES = {
+            remember: ["What is defined as", "Identify the core element of", "State the primary fact about"],
+            understand: ["Which description summarizes", "How do you interpret the mechanism of", "Explain the main reason behind"],
+            apply: ["How would you apply this concept to solve", "Which scenario best illustrates", "Predict the immediate outcome if you deploy"],
+            analyze: ["Compare and contrast the relationship between", "Analyze the structural pattern of", "What breakdown explains"],
+            evaluate: ["Evaluate the absolute validity of", "Justify why the following holds true:", "Critique the primary argument concerning"],
+            create: ["Formulate an alternative solution for", "Design a conceptual framework based on", "Synthesize a new hypothesis to test"]
+        };
 
-        const TRANSLATIONS = {
+        // 7. Topic & Chapter Detection Engine (Regular Expressions)
+        function detectChaptersAndUnits(text) {
+            const chapterRegex = /(?:Chapter|Unit|ምዕራፍ|ክፍል)\s*(\d+)/gi;
+            let matches = [];
+            let match;
+            while ((match = chapterRegex.exec(text)) !== null) {
+                matches.push(`Chapter ${match[1]}`);
+            }
+            return matches.length > 0 ? matches : ["General Core Topic"];
+        }
+
+        // 4. Explanation & 8. Smart Distractors Generator
+        function generateSmartDistractors(correctAnswer, contextText) {
+            let options = [correctAnswer];
+            let words = contextText.split(/\s+/).filter(w => w.length > 4 && w.toLowerCase() !== correctAnswer.toLowerCase());
+            
+            // string-similarity በመጠቀም እውነተኛ የሚመስሉ አሳሳች ምርጫዎችን መለየት
+            let similarities = words.map(w => {
+                let score = typeof stringSimilarity !== 'undefined' ? stringSimilarity.compareTwoStrings(correctAnswer, w) : 0;
+                return { word: w, score: score };
+            }).sort((a,b) => b.score - a.score);
+
+            for(let i=0; i<similarities.length && options.length < 4; i++) {
+                let cleanWord = similarities[i].word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+                if(!options.includes(cleanWord) && cleanWord.length > 2) {
+                    options.push(cleanWord);
+                }
+            }
+
+            while(options.length < 4) {
+                options.push("Alternative Option " + (options.length + 1));
+            }
+            return options.sort(() => Math.random() - 0.5); 
+        }
+
+        // 1. Smart Question Engine & 12. Question Quality Checker
+        function processRawTextToQuestions(text, difficulty, type, bloomLevel) {
+            if (!text || text.trim().length < 20) return null;
+
+            const chapters = detectChaptersAndUnits(text);
+            const targetChapter = chapters[0];
+
+            let extractedSentence = text.split(/[.!?]/)[0]; 
+            let keywords = extractedSentence.split(" ").filter(w => w.length > 5);
+            if(keywords.length === 0) return null;
+            
+            let answer = keywords[0].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+            let blankedSentence = extractedSentence.replace(keywords[0], "_______");
+
+            let templateList = BLOOMS_TEMPLATES[bloomLevel] || BLOOMS_TEMPLATES.remember;
+            let prefix = templateList[Math.floor(Math.random() * templateList.length)];
+            
+            let finalQuestionText = `${prefix} ${blankedSentence.trim()}?`;
+
+            // 4. Duplicate Removal ሎጂክ
+            let isDuplicate = false;
+            if (typeof stringSimilarity !== 'undefined') {
+                for (let q of EXAM_SUITE_STATE.activeQuestions) {
+                    if (stringSimilarity.compareTwoStrings(q.question, finalQuestionText) > 0.70) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isDuplicate) return null; 
+
+            let options = generateSmartDistractors(answer, text);
+
+            // 4. Explanation Generator ሎጂክ
+            let explanation = `ትክክለኛው መልስ "${answer}" ነው። ምክንያቱም በቅንጭብ ፅሁፉ መሰረት ይህ ሃሳብ በቀጥታ የሚገኘው በ [${targetChapter}] ውስጥ ሲሆን ጥቅሱም፦ "${extractedSentence.trim()}" ይላል።`;
+
+            return {
+                id: Date.now() + Math.random(),
+                question: finalQuestionText,
+                type: type || 'multiple-choice', 
+                options: options,
+                answer: answer,
+                difficulty: difficulty || 'medium',
+                bloom: bloomLevel || 'understand',
+                chapter: targetChapter,
+                explanation: explanation,
+                language: EXAM_SUITE_STATE.currentLanguage
+            };
+        }
+
+        // 5. OCR Upgrade (Sustained Image Canvas To Tesseract Local OCR)
+        async function runOfflineOCR(imageElementOrCanvas) {
+            if(typeof Tesseract !== 'undefined') {
+                console.log("Starting Local OCR Engine...");
+                const worker = await Tesseract.createWorker();
+                await worker.loadLanguage('eng+amh'); 
+                await worker.initialize('eng+amh');
+                const { data: { text } } = await worker.recognize(imageElementOrCanvas);
+                await worker.terminate();
+                return text;
+            }
+            return "OCR Engine Library is not defined.";
+        }
+
+        // 10. Exam Builder & 11. Answer Sheet / Marking Sheet Engine
+        function buildExamPaper(config) {
+            let pool = EXAM_SUITE_STATE.activeQuestions.filter(q => q.difficulty === config.difficulty);
+            if(pool.length === 0) pool = EXAM_SUITE_STATE.activeQuestions;
+
+            let selected = pool.slice(0, config.count);
+            
+            let answerKey = selected.map((q, idx) => `${idx + 1}. መልስ፡ ${q.answer} | ማብራሪያ (Explanation)፦ ${q.explanation}`);
+            
+            let paper = {
+                id: 'PAPER_' + Date.now(),
+                questions: selected,
+                answerKey: answerKey,
+                generatedAt: new Date().toLocaleDateString()
+            };
+
+            EXAM_SUITE_STATE.generatedPapers.push(paper);
+            updateDashboardStatistics();
+            return paper;
+        }
+
+        // 14. Statistics Dashboard Update Engine
+        function updateDashboardStatistics() {
+            let stats = EXAM_SUITE_STATE.statistics;
+            stats.totalGenerated = EXAM_SUITE_STATE.activeQuestions.length;
+            
+            stats.difficultyDist = { easy: 0, medium: 0, hard: 0, expert: 0 };
+            EXAM_SUITE_STATE.activeQuestions.forEach(q => {
+                if (stats.difficultyDist[q.difficulty] !== undefined) {
+                    stats.difficultyDist[q.difficulty]++;
+                } else {
+                    stats.difficultyDist[q.difficulty] = 1;
+                }
+                stats.chapters[q.chapter] = (stats.chapters[q.chapter] || 0) + 1;
+            });
+
+            console.log("Dashboard Stats Synced Successfully:", stats);
+            
+            const statBox = document.getElementById('ai-study-table');
+            if(statBox) {
+                statBox.innerHTML = `
+                    <div class="analytics-box" style="padding: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <h3 style="color:var(--accent); text-align: left; margin-bottom: 10px;">📊 የፈተናዎች ስታትስቲክስ ሰሌዳ (Dashboard)</h3>
+                        <p>Total Questions Created: <b>${stats.totalGenerated}</b></p>
+                        <p>Easy: <b>${stats.difficultyDist.easy}</b> | Medium: <b>${stats.difficultyDist.medium}</b> | Hard: <b>${stats.difficultyDist.hard}</b> | Expert: <b>${stats.difficultyDist.expert}</b></p>
+                    </div>
+                `;
+            }
+        }
+
+        // 9. Export System Engine (PDF Print Layout & Word Local Blob)
+        function exportExamData(paper, format) {
+            if(!paper || !paper.questions || paper.questions.length === 0) {
+                alert("ምንም ንቁ ፈተና አልተገኘም!");
+                return;
+            }
+            let content = `EXAM PAPER - GENERATED VIA MMSS PRO\nDATE: ${paper.generatedAt}\n\n`;
+            paper.questions.forEach((q, idx) => {
+                content += `${idx + 1}. [${q.difficulty.toUpperCase()} - ${q.bloom.toUpperCase()}] ${q.question}\n`;
+                if(q.options && q.options.length > 1) {
+                    content += `   A) ${q.options[0]}   B) ${q.options[1]}   C) ${q.options[2]}   D) ${q.options[3]}\n`;
+                }
+                content += `\n`;
+            });
+
+            content += `\n=== ANSWER KEY & MARKING SHEET ===\n`;
+            content += paper.answerKey.join('\n');
+
+            if(format === 'txt' || format === 'docx') {
+                let blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `Professional_Exam_${paper.id}.${format === 'docx' ? 'doc' : 'txt'}`;
+                link.click();
+            } else if(format === 'pdf') {
+                let printWindow = window.open('', '_blank');
+                printWindow.document.write(`<pre style="font-family:monospace; padding:30px; font-size:14px;">${content}</pre>`);
+                printWindow.document.close();
+                printWindow.print();
+            }
+        }
+
+        function triggerActivePaperExport(format) {
+            if(EXAM_SUITE_STATE.generatedPapers.length > 0) {
+                let latestPaper = EXAM_SUITE_STATE.generatedPapers[EXAM_SUITE_STATE.generatedPapers.length - 1];
+                exportExamData(latestPaper, format);
+            } else {
+                // ንቁ ወረቀት ከሌለ አውቶማቲክ ወረቀት ሰርቶ ኤክስፖርት ያደርጋል
+                let paper = buildExamPaper({count: 5, difficulty: 'medium'});
+                exportExamData(paper, format);
+            }
+        }
+
+        // 15. Multi-Language Router
+        function switchSystemLanguage(langCode) {
+            EXAM_SUITE_STATE.currentLanguage = langCode; 
+            console.log("System Localized to: " + langCode);
+        }
+    </script>
+
+    <script>
+        let HISTORY_LOG = [];
+        let CURRENT_GATEWAY = "";
+        let SELECTED_SUBJECT = "";
+        let SELECTED_YEAR = "";
+        let QUESTIONS_POOL = [];
+        let CURRENT_Q_INDEX = 0;
+        let USER_ANSWERS = {};
+        let EXAM_TIMER = null;
+        let TIME_LEFT = 7200; 
+        let IS_EYE_CARE_ACTIVE = false;
+        let EXAM_START_TIME = 0;
+
+        const SYSTEM_LANGUAGES = {
             am: {
-                main_title: "MMSS EXAM SYSTEM", main_subtitle: "የበረከት ቀናው ዲጂታል የፈጠራ ውጤት",
-                login_lbl: "የደህንነት መግቢያ ኮድ፦", login_btn: "ይግቡ", gate_title: "የፈተና ዘርፍ ይምረጡ",
-                gate_subtitle: "ለመጀመር የሚፈልጉትን የትምህርት ዘርፍ ወይም የሞዴል ፈተና ይምረጡ",
-                gate_pdf_btn: "📄 AI PDF EXAM", back_link: "← ወደ ኋላ ይመለሱ", subj_title: "የትምህርት ዓይነት",
-                year_title: "የፈተና ዓመተ ምህረት / ራውንድ", pdf_panel_title: "📄 AI PDF EXAM (የራስህን ፈተና ፍጠር)",
-                pdf_lbl_name: "የፈተናው ስም (መለያ)፦", pdf_lbl_diff: "የጥያቄ ክብደት፦",
-                opt_easy: "ቀላል (Easy)", opt_med: "መካከለኛ (Medium)", opt_hard: "ከበድ ያለ (Hard)",
-                pdf_lbl_count: "የጥያቄ ብዛት (ዝም ካሉት 100 ይሆናል)፦", pdf_lbl_mode: "ከየትኛው ምዕራፍ ክልል ይውጣ? (Chapter Range)፦",
-                pdf_gen_btn: "✨ ፈተና አውጣና በቋሚነት አስቀምጥ",
-                pdf_del_note: "(ማሳሰቢያ፦ ለመሰረዝ ለ 7 ሰከንድ ተጭነው ይያዙት)",
-                exam_title_pdf: "AI PDF ፈተና", exam_title_normal: "ፈተና", btn_prev: "← የኋላ",
-                btn_finish: "ፈተናውን ጨርስ", btn_next: "የፊት →", nav_grid_title: "የጥያቄዎች ማውጫ",
-                res_title: "የፈተና ውጤት ማጠቃለያ", res_subtitle: "ፈተናውን በተሳካ ሁኔታ አጠናቀዋል። ከታች ያለውን ቁልፍ በመንካት የእያንዳንዱን ጥያቄ ትክክለኛ መልስ ማየት ይችላሉ።",
-                res_rev_btn: "የመልስ ማብራሪያዎችን ይዩ", res_home_btn: "ወደ ዋናው ገጽ ተመለስ",
-                rev_back_btn: "← ወደ ውጤት ማጠቃለያ", rev_title: "የመልስ ማረጋገጫና ክለሳ",
-                set_title: "ቅንብሮች (Settings)", set_lang_lbl: "ቋንቋ (Language)", set_theme_lbl: "ገጽታ (Theme)", set_eye_lbl: "የአይን ጥበቃ (Eye Care)",
-                no_pdf_msg: "በዚህ ፎልደር ውስጥ እስካሁን የተፈጠረ የፒዲኤፍ ፈተና የለም።", err_name: "እባክዎ መጀመሪያ ለፈተናው ስም (መለያ) ይስጡት!",
-                err_file: "እባክዎ ፒዲኤፍ (PDF) መጽሐፍ ያስገቡ!", err_duplicate: "ይህ የፈተና ስም ቀደም ብሎ ተመዝግቧል።",
-                alert_load: "የተመረጠው ፈተና ገና አልተጫነም!", pass_err: "የተሳሳተ የደህንነት ኮድ ነው!",
-                review_q: "ጥያቄ", review_u: "የመረጥከው መልስ፦", review_c: "ትክክለኛው መልስ፦", review_un: "አልተመለሰም",
-                ok_btn_txt: "እሺ (OK)", pdf_lbl_folder: "የሚቀመጥበት ፎልደር (Folder Target)፦",
-                gate_my_btn: "📂 የእኔ ጥያቄዎች (MY CUSTOM EXAMS)",
-                my_gate_title: "የእኔ ጥያቄዎች ፎልደር",
-                my_gate_subtitle: "ያወጧቸው ጥያቄዎች የተቀመጡበትን ዘርፍ ይምረጡ",
-                folder_list_title: "የተቀመጡ የፒዲኤፍ ፈተናዎች",
-                gate_ai_btn: "🧠 AI COACH & ANALYTICS",
-                ai_dash_title: "🧠 AI Personal Coach & Analytics",
-                ai_dash_sub: "ያለ ኢንተርኔት በራስ-ሰር የሚሰራ ሙሉ የአፈጻጸም ትንተና ዳሽቦርድ",
-                ai_coach_lbl: "🤖 AI Study Coach መልእክት፦",
-                ai_weak_lbl: "🔍 የድክመት መለያ (Weakness Detection)",
-                ai_career_lbl: "🎯 የወደፊት ሙያ አመላካች (Career Finder)",
-                ai_plan_lbl: "📅 ብጁ የ 7 ቀን የጥናት እቅድ (Personalized Study Plan)"
+                mainTitle: "MMSS EXAM SYSTEM", mainSubtitle: "የበረከት ቀናው ዲጂታል የፈጠራ ውጤት", loginLbl: "የደህንነት መግቢያ ኮድ፦", loginBtn: "ይግቡ",
+                gateTitle: "የፈተና ዘርፍ ይምረጡ", gateSub: "ለመጀመር የሚፈልጉትን የትምህርት ዘርፍ ወይም የሞዴል ፈተና ይምረጡ",
+                setupTitle: "የማንነት እና የዓላማ መመዝገቢያ", setupSub: "ሲስተሙ በስምህ አውቆህ ግላዊ እገዛ እንዲያደርግልህ እባክህ መረጃህን በትክክል ሙሉ",
+                setupBtn: "መረጃዬን መዝግብና ወደ ዳሽቦርድ እለፍ", myFolderTitle: "የእኔ ጥያቄዎች ፎልደር", myFolderSub: "ያወጧቸው ጥያቄዎች የተቀመጡበትን ዘርፍ ይምረጡ",
+                savedExamsTitle: "የተቀመጡ የፒዲኤፍ ፈተናዎች", pdfDelNote: "(ማሳሰቢያ፦ ለመሰረዝ ለ 7 ሰከንድ ተጭነው ይያዙት)", subjTitle: "የትምህርት ዓይነት", yearTitle: "የፈተና ዓመተ ምህረት / ራውንድ",
+                timerTxt: "02:00:00", examFinish: "ፈተናውን ጨርስ", navTitle: "የጥያቄዎች ማውጫ", resTitle: "የፈተና ውጤት ማጠቃለያ", resHome: "ወደ ዋና ገጽ", resRev: "መልሶችን ከማብራሪያ ጋር እይ",
+                revTitle: "የጥያቄዎች ማስተካከያና ዝርዝር ማብራሪያ", revHome: "ወደ ዋና ገጽ ተመለስ", coachTitle: "🧠 AI COACH & PERFORMANCE ANALYTICS", coachSub: "ባደረግካቸው ፈተናዎች መሰረት የእውቀት ደረጃህን በራስ-ሰር የሚመረምር ስማርት ሞተር"
             },
             en: {
-                main_title: "MMSS EXAM SYSTEM", main_subtitle: "Digital Innovation by Bereket Kenaw",
-                login_lbl: "Security Access Code:", login_btn: "Login", gate_title: "Select Exam Stream",
-                gate_subtitle: "Choose your preferred academic stream or model examinations to start",
-                gate_pdf_btn: "📄 AI PDF EXAM", back_link: "← Go Back", subj_title: "Subject Selection",
-                year_title: "Exam Year / Round", pdf_panel_title: "📄 AI PDF EXAM (Create Custom Exam)",
-                pdf_lbl_name: "Exam Name (Identifier):", pdf_lbl_diff: "Question Difficulty:",
-                opt_easy: "Easy", opt_med: "Medium", opt_hard: "Hard",
-                pdf_lbl_count: "Question Count (Default is 100):", pdf_lbl_mode: "Chapter Range Options:",
-                pdf_gen_btn: "✨ Generate & Save Exam Permanently",
-                pdf_del_note: "(Note: Hold down for 7 seconds to delete)",
-                exam_title_pdf: "AI PDF Exam", exam_title_normal: "Examination", btn_prev: "← Previous",
-                btn_finish: "Finish Exam", btn_next: "Next →", nav_grid_title: "Questions Navigator",
-                res_title: "Exam Result Summary", res_subtitle: "You have completed the exam successfully. You can review all correct answers below.",
-                res_rev_btn: "Review Answers & Explanations", res_home_btn: "Back to Home Page",
-                rev_back_btn: "← Back to Result Summary", rev_title: "Answer Key & Explanations",
-                set_title: "Settings", set_lang_lbl: "Language", set_theme_lbl: "Theme", set_eye_lbl: "Eye Care Mode",
-                no_pdf_msg: "No custom PDF exams generated in this folder yet.", err_name: "Please provide an exam identifier name first!",
-                err_file: "Please upload a valid PDF book!", err_duplicate: "This exam name already exists.",
-                alert_load: "Selected exam data is not loaded yet!", pass_err: "Incorrect security access code!",
-                review_q: "Question", review_u: "Your Choice:", review_c: "Correct Answer:", review_un: "Not Answered",
-                ok_btn_txt: "OK", pdf_lbl_folder: "Target Storage Folder:",
-                gate_my_btn: "📂 MY CUSTOM EXAMS",
-                my_gate_title: "My Custom Exams Folder",
-                my_gate_subtitle: "Select the academic stream folder to view your generated exams",
-                folder_list_title: "Saved Custom PDF Exams",
-                gate_ai_btn: "🧠 AI COACH & ANALYTICS",
-                ai_dash_title: "🧠 AI Personal Coach & Analytics",
-                ai_dash_sub: "Offline automated performance analytics dashboard",
-                ai_coach_lbl: "🤖 AI Study Coach Message:",
-                ai_weak_lbl: "🔍 Weakness Detection",
-                ai_career_lbl: "🎯 Career Finder",
-                ai_plan_lbl: "📅 Personalized Study Plan"
+                mainTitle: "MMSS EXAM SYSTEM", mainSubtitle: "Bereket's Premium Digital Innovation", loginLbl: "Security Access Code:", loginBtn: "Login",
+                gateTitle: "Select Exam Gateway", gateSub: "Choose your academic department or standard mock trials",
+                setupTitle: "Identity & Vision Board Registration", setupSub: "Let the system learn your profile to customize offline coaching maps",
+                setupBtn: "Register Data & Access Dashboard", myFolderTitle: "My Custom Storage Vault", myFolderSub: "Pick target stream directory to inspect extracted archives",
+                savedExamsTitle: "Archived Automated AI Exams", pdfDelNote: "(Note: Hold press item for 7 seconds to execute data deletion)", subjTitle: "Academic Discipline", yearTitle: "Examination Timeline / Year Matrix",
+                timerTxt: "02:00:00", examFinish: "Terminate Examination", navTitle: "Question Navigator Index", resTitle: "Diagnostic Performance Metrics Overview", resHome: "Return Home Menu", resRev: "Launch Comprehensive Explanation Engine",
+                revTitle: "Algorithmic Verification & Remedial Guidelines", revHome: "Flush Session & Return Home", coachTitle: "🧠 AI COACH & PERFORMANCE ANALYTICS", coachSub: "Sustained execution pattern interpreter engine for diagnostic scheduling maps"
             }
         };
+
+        function pushLog(pageId) {
+            if(HISTORY_LOG[HISTORY_LOG.length - 1] !== pageId) {
+                HISTORY_LOG.push(pageId);
+            }
+            const backBtn = document.getElementById('global-back-button');
+            if(HISTORY_LOG.length > 1) {
+                backBtn.style.display = "block";
+            } else {
+                backBtn.style.display = "none";
+            }
+        }
+
+        function triggerGlobalBack() {
+            if(HISTORY_LOG.length <= 1) return;
+            HISTORY_LOG.pop(); 
+            let prevPage = HISTORY_LOG[HISTORY_LOG.length - 1];
+            
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(prevPage).classList.add('active');
+            
+            const backBtn = document.getElementById('global-back-button');
+            if(HISTORY_LOG.length > 1) {
+                backBtn.style.display = "block";
+            } else {
+                backBtn.style.display = "none";
+            }
+        }
+
+        function nav(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+                pushLog(pageId);
+            }
+        }
 
         function toggleSettings() {
             document.getElementById('settings-box').classList.toggle('active');
         }
 
         function changeLang(lang) {
-            currentLanguage = lang;
-            document.querySelectorAll('.toggle-btn[id^="lang-"]').forEach(b => b.classList.remove('active'));
-            document.getElementById('lang-' + lang).classList.add('active');
+            switchSystemLanguage(lang);
+            document.getElementById('lang-am').classList.toggle('active', lang === 'am');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             
-            let dict = TRANSLATIONS[lang];
-            document.getElementById('main-title').innerText = dict.main_title;
-            document.getElementById('main-subtitle').innerText = dict.main_subtitle;
-            document.getElementById('login-lbl').innerText = dict.login_lbl;
-            document.getElementById('login-btn').innerText = dict.login_btn;
-            document.getElementById('gate-title').innerText = dict.gate_title;
-            document.getElementById('gate-subtitle').innerText = dict.gate_subtitle;
-            document.getElementById('gate-pdf-btn').innerText = dict.gate_pdf_btn;
-            document.getElementById('gate-my-btn').innerText = dict.gate_my_btn;
-            document.getElementById('gate-ai-btn').innerText = dict.gate_ai_btn;
-            
-            document.getElementById('my-gate-title').innerText = dict.my_gate_title;
-            document.getElementById('my-gate-subtitle').innerText = dict.my_gate_subtitle;
-            document.getElementById('folder-list-title').innerText = dict.folder_list_title;
-            
-            document.getElementById('pdf-panel-title').innerText = dict.pdf_panel_title;
-            document.getElementById('pdf-lbl-name').innerText = dict.pdf_lbl_name;
-            document.getElementById('pdf-lbl-folder').innerText = dict.pdf_lbl_folder;
-            document.getElementById('pdf-lbl-diff').innerText = dict.pdf_lbl_diff;
-            document.getElementById('opt-easy').innerText = dict.opt_easy;
-            document.getElementById('opt-med').innerText = dict.opt_med;
-            document.getElementById('opt-hard').innerText = dict.opt_hard;
-            document.getElementById('pdf-lbl-count').innerText = dict.pdf_lbl_count;
-            document.getElementById('pdf-lbl-mode').innerText = dict.pdf_lbl_mode;
-            document.getElementById('pdf-gen-btn').innerText = dict.pdf_gen_btn;
-            document.getElementById('pdf-del-note').innerText = dict.pdf_del_note;
-            document.getElementById('btn-prev').innerText = dict.btn_prev;
-            document.getElementById('btn-finish').innerText = dict.btn_finish;
-            document.getElementById('btn-next').innerText = dict.btn_next;
-            document.getElementById('nav-grid-title').innerText = dict.nav_grid_title;
-            document.getElementById('res-title').innerText = dict.res_title;
-            document.getElementById('res-subtitle').innerText = dict.res_subtitle;
-            document.getElementById('res-rev-btn').innerText = dict.res_rev_btn;
-            document.getElementById('res-home-btn').innerText = dict.res_home_btn;
-            document.getElementById('rev-title').innerText = dict.rev_title;
-            document.getElementById('set-title').innerText = dict.set_title;
-            document.getElementById('set-lang-lbl').innerText = dict.set_lang_lbl;
-            document.getElementById('set-theme-lbl').innerText = dict.set_theme_lbl;
-            document.getElementById('set-eye-lbl').innerText = dict.set_eye_lbl;
-            document.getElementById('set-ok-btn').innerText = dict.ok_btn_txt;
-
-            document.getElementById('ai-dash-title').innerText = dict.ai_dash_title;
-            document.getElementById('ai-dash-sub').innerText = dict.ai_dash_sub;
-            document.getElementById('ai-coach-lbl').innerText = dict.ai_coach_lbl;
-            document.getElementById('ai-weak-lbl').innerText = dict.ai_weak_lbl;
-            document.getElementById('ai-career-lbl').innerText = dict.ai_career_lbl;
-            document.getElementById('ai-plan-lbl').innerText = dict.ai_plan_lbl;
-            
-            renderWelcomeDashboard();
+            const trans = SYSTEM_LANGUAGES[lang];
+            document.getElementById('main-title').innerText = trans.mainTitle;
+            document.getElementById('main-subtitle').innerText = trans.mainSubtitle;
+            document.getElementById('login-lbl').innerText = trans.loginLbl;
+            document.getElementById('login-btn').innerText = trans.loginBtn;
+            document.getElementById('gate-title').innerText = trans.gateTitle;
+            document.getElementById('gate-subtitle').innerText = trans.gateSub;
+            document.getElementById('setup-title').innerText = trans.setupTitle;
+            document.getElementById('setup-sub').innerText = trans.setupSub;
+            document.getElementById('setup-save-btn').innerText = trans.setupBtn;
+            document.getElementById('my-gate-title').innerText = trans.myFolderTitle;
+            document.getElementById('my-gate-subtitle').innerText = trans.myFolderSub;
+            document.getElementById('folder-list-title').innerText = trans.savedExamsTitle;
+            document.getElementById('pdf-del-note').innerText = trans.pdfDelNote;
+            document.getElementById('subj-title').innerText = trans.subjTitle;
+            document.getElementById('year-title').innerText = trans.yearTitle;
+            document.getElementById('btn-finish').innerText = trans.examFinish;
+            document.getElementById('nav-grid-title').innerText = trans.navTitle;
+            document.getElementById('res-title').innerText = trans.resTitle;
+            document.getElementById('res-home-btn').innerText = trans.resHome;
+            document.getElementById('res-rev-btn').innerText = trans.resRev;
+            document.getElementById('rev-title-hdr').innerText = trans.revTitle;
+            document.getElementById('rev-close-btn').innerText = trans.revHome;
+            document.getElementById('coach-title').innerText = trans.coachTitle;
+            document.getElementById('coach-sub').innerText = trans.coachSub;
         }
 
         function changeTheme(theme) {
-            document.querySelectorAll('.toggle-btn[id^="theme-"]').forEach(b => b.classList.remove('active'));
-            document.getElementById('theme-' + theme).classList.add('active');
-            if(theme === 'light') {
-                document.body.classList.add('light-theme');
-            } else {
-                document.body.classList.remove('light-theme');
-            }
+            document.body.classList.toggle('light-theme', theme === 'light');
+            document.getElementById('theme-dark').classList.toggle('active', theme === 'dark');
+            document.getElementById('theme-light').classList.toggle('active', theme === 'light');
         }
 
-        function changeEyeCare(isOn) {
-            document.querySelectorAll('.toggle-btn[id^="eye-"]').forEach(b => b.classList.remove('active'));
-            if(isOn) {
-                document.getElementById('eye-on').classList.add('active');
-                document.documentElement.style.setProperty('--overlay-bg', 'rgba(235, 140, 0, 0.15)');
-            } else {
-                document.getElementById('eye-off').classList.add('active');
-                document.documentElement.style.setProperty('--overlay-bg', 'rgba(0,0,0,0)');
-            }
-        }
-
-        function nav(id) {
-            let activePage = document.querySelector('.page.active');
-            if (activePage && activePage.id !== id) {
-                pageHistory.push(activePage.id);
-            }
+        function changeEyeCare(isActive) {
+            IS_EYE_CARE_ACTIVE = isActive;
+            document.getElementById('eye-on').classList.toggle('active', isActive);
+            document.getElementById('eye-off').classList.toggle('active', !isActive);
             
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-
-            const backBtn = document.getElementById('global-back-button');
-            if(id === 'p-login' || id === 'p-profile-setup' || id === 'p-gateway' || id === 'p-exam') {
-                backBtn.style.display = 'none'; 
+            const overlay = document.styleSheets[0];
+            if(isActive) {
+                document.documentElement.style.setProperty('--overlay-bg', 'rgba(243, 156, 18, 0.08)');
             } else {
-                backBtn.style.display = 'block'; 
-            }
-        }
-
-        function triggerGlobalBack() {
-            if (pageHistory.length > 0) {
-                let prevPageId = pageHistory.pop();
-                
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.getElementById(prevPageId).classList.add('active');
-                
-                const backBtn = document.getElementById('global-back-button');
-                if(prevPageId === 'p-login' || prevPageId === 'p-profile-setup' || prevPageId === 'p-gateway' || prevPageId === 'p-exam') {
-                    backBtn.style.display = 'none';
-                } else {
-                    backBtn.style.display = 'block';
-                }
-            } else {
-                nav('p-gateway');
+                document.documentElement.style.setProperty('--overlay-bg', 'rgba(0, 0, 0, 0)');
             }
         }
 
         function checkLogin() {
-            let inputVal = document.getElementById('pass-input').value.trim();
-            if(inputVal === '1234' || inputVal === 'Bereket2127') {
-                let savedProfile = localStorage.getItem('mmss_user_profile');
-                if (savedProfile) {
-                    renderWelcomeDashboard();
-                    nav('p-gateway');
-                } else {
+            const input = document.getElementById('pass-input').value;
+            if(input === "12345678") {
+                localforage.getItem('student_profile').then(profile => {
+                    if(profile && profile.name) {
+                        loadDashboardWithProfile(profile);
+                    } else {
+                        nav('p-profile-setup');
+                    }
+                }).catch(() => {
                     nav('p-profile-setup');
-                }
+                });
             } else {
-                alert(TRANSLATIONS[currentLanguage].pass_err);
+                alert("የደህንነት መግቢያ ኮድ የተሳሳተ ነው!");
             }
         }
 
         function saveStudentProfile() {
-            let name = document.getElementById('stud-name').value.trim();
-            let grade = document.getElementById('stud-grade').value;
-            let stream = document.getElementById('stud-stream').value;
-            let target = document.getElementById('stud-target').value.trim();
-            let vision = document.getElementById('stud-vision').value.trim();
-
-            if(!name || !target || !vision) {
-                alert(currentLanguage === 'am' ? "እባክዎ ሁሉንም መረጃዎች በአግባቡ ይሙሉ!" : "Please fill all profile inputs properly!");
-                return;
-            }
-
-            let profileObj = { name, grade, stream, target: parseInt(target), vision };
-            localStorage.setItem('mmss_user_profile', JSON.stringify(profileObj));
+            const profile = {
+                name: document.getElementById('stud-name').value || "ተማሪ",
+                grade: document.getElementById('stud-grade').value,
+                stream: document.getElementById('stud-stream').value,
+                target: document.getElementById('stud-target').value || "600",
+                vision: document.getElementById('stud-vision').value || "ትልቅ ራዕይ"
+            };
             
-            renderWelcomeDashboard();
+            localforage.setItem('student_profile', profile).then(() => {
+                loadDashboardWithProfile(profile);
+            });
+        }
+
+        function loadDashboardWithProfile(profile) {
+            document.getElementById('user-welcome-greet').innerText = `ሰላም ${profile.name} (${profile.grade}ኛ ክፍል - ${profile.stream === 'Natural' ? 'የተፈጥሮ ሳይንስ' : 'የማህበራዊ ሳይንስ'}) 👋`;
+            document.getElementById('user-vision-board').innerText = `🎯 ያንተ ትልቅ ግብ ማኑፌስቶ፦ "ውጤት፡ ${profile.target} + ራዕይ፦ ${profile.vision}"`;
             nav('p-gateway');
         }
 
-        function renderWelcomeDashboard() {
-            let savedProfile = localStorage.getItem('mmss_user_profile');
-            if(!savedProfile) return;
-            
-            let prof = JSON.parse(savedProfile);
-            const greetBox = document.getElementById('user-welcome-greet');
-            const visionBox = document.getElementById('user-vision-board');
-
-            if(currentLanguage === 'am') {
-                greetBox.innerHTML = `👋 ሰላም ተማሪ <b>${prof.name}</b> (${prof.grade}ኛ ክፍል - ${prof.stream === 'Natural' ? 'ተፈጥሮ' : 'ማህበራዊ'} ሳይንስ)`;
-                visionBox.innerHTML = `🎯 ያንተ ትልቅ ራዕይ፦ "<u>${prof.vision}</u>" ለመሆን እና በፈተና <b>${prof.target}</b> ለማምጣት ነው!`;
-            } else {
-                greetBox.innerHTML = `👋 Welcome, Student <b>${prof.name}</b> (Grade ${prof.grade} - ${prof.stream} Science)`;
-                visionBox.innerHTML = `🎯 Ultimate Goal: "<u>${prof.vision}</u>" | Target Score: <b>${prof.target}</b>`;
+        function chooseGateway(gateway) {
+            CURRENT_GATEWAY = gateway;
+            if(gateway === 'ModelExams') {
+                renderSubjects(['Biology Model', 'Chemistry Model', 'Physics Model', 'Maths Model', 'English Model', 'History Model', 'Geography Model', 'Economics Model', 'Aptitude Model']);
+            } else if(gateway === 'Natural') {
+                renderSubjects(['Biology', 'Chemistry', 'Physics', 'Maths Natural', 'English']);
+            } else if(gateway === 'Social') {
+                renderSubjects(['History', 'Geography', 'Economics', 'Maths Social', 'English']);
             }
         }
 
-        function chooseGateway(g) {
-            curStr = g;
-            pageHistory = ['p-gateway']; 
-            if(g === 'ModelExams') {
-                document.getElementById('subj-title').innerText = "የሞዴል ፈተና ዘርፍ";
-                const grid = document.getElementById('subj-grid'); grid.innerHTML = "";
-                ['Natural', 'Social'].forEach(stream => {
-                    let div = document.createElement('div'); div.className = "sub-btn";
-                    div.style.fontWeight = "bold"; div.innerText = stream + " Model Exams";
-                    div.onclick = () => { curStr = "ModelExams"; isModel = true; openModelStream(stream); };
-                    grid.appendChild(div);
-                });
-                nav('p-subjects');
+        function renderSubjects(subjectsList) {
+            const grid = document.getElementById('subj-grid');
+            grid.innerHTML = "";
+            subjectsList.forEach(sub => {
+                const item = document.createElement('div');
+                item.className = "sub-btn";
+                item.innerText = sub.toUpperCase();
+                item.onclick = () => selectSubject(sub);
+                grid.appendChild(item);
+            });
+            nav('p-subjects');
+        }
+
+        function selectSubject(subject) {
+            SELECTED_SUBJECT = subject;
+            if(CURRENT_GATEWAY === 'ModelExams') {
+                launchExamDirectly(subject, 'Model Paper');
             } else {
-                isModel = false;
-                document.getElementById('subj-title').innerText = currentLanguage === 'am' ? "የተፈጥሮ ሳይንስ ትምህርቶች" : "Natural Science Subjects";
-                if(g === 'Social') document.getElementById('subj-title').innerText = currentLanguage === 'am' ? "የማህበራዊ ሳይንስ ትምህርቶች" : "Social Science Subjects";
-                
-                const grid = document.getElementById('subj-grid'); grid.innerHTML = "";
-                let list = Object.keys(QUESTIONS_DB[g]);
-                let commonList = Object.keys(QUESTIONS_DB.Common || {});
-                let totalList = [...list, ...commonList];
-
-                totalList.forEach(sub => {
-                    let div = document.createElement('div'); div.className = "sub-btn"; div.innerText = sub;
-                    div.onclick = () => chooseSubject(sub);
-                    grid.appendChild(div);
+                const years = ['2016 Round 1', '2016 Round 2', '2015', '2014', '2013'];
+                const grid = document.getElementById('year-grid');
+                grid.innerHTML = "";
+                years.forEach(yr => {
+                    const item = document.createElement('div');
+                    item.className = "sub-btn";
+                    item.innerText = yr;
+                    item.onclick = () => launchExamDirectly(subject, yr);
+                    grid.appendChild(item);
                 });
-                nav('p-subjects');
+                nav('p-years');
             }
-        }
-
-        function openModelStream(stream) {
-            document.getElementById('subj-title').innerText = stream + " Model Subjects";
-            const grid = document.getElementById('subj-grid'); grid.innerHTML = "";
-            Object.keys(QUESTIONS_DB.ModelExams[stream]).forEach(sub => {
-                let div = document.createElement('div'); div.className = "sub-btn"; div.innerText = sub;
-                div.onclick = () => { curSub = sub; openYears(QUESTIONS_DB.ModelExams[stream][sub], true); };
-                grid.appendChild(div);
-            });
-        }
-
-        function chooseSubject(sub) {
-            curSub = sub;
-            let dbSource = QUESTIONS_DB[curStr][sub] ? QUESTIONS_DB[curStr][sub] : QUESTIONS_DB.Common[sub];
-            openYears(dbSource, false);
-        }
-
-        function openYears(dbSource, isModType) {
-            const grid = document.getElementById('year-grid'); grid.innerHTML = "";
-            Object.keys(dbSource).forEach(yr => {
-                let div = document.createElement('div'); div.className = "sub-btn";
-                div.innerText = isModType ? yr.replace('_', ' ') : yr + (currentLanguage === 'am' ? " ዓ.ም ፈተና" : " Exam");
-                div.onclick = () => {
-                    let raw = dbSource[yr];
-                    if(!raw || raw.length === 0) { alert(TRANSLATIONS[currentLanguage].alert_load); return; }
-                    isCustomPdfMode = false;
-                    startExam(raw);
-                };
-                grid.appendChild(div);
-            });
-            nav('p-years');
-        }
-
-        function openPdfPanel() {
-            nav('p-pdf-panel');
         }
 
         function openMyQuestionsGateway() {
             nav('p-my-gateway');
         }
 
-        function viewMyFolder(folderName) {
-            activeSelectedFolder = folderName;
-            document.getElementById('folder-list-title').innerText = folderName === 'Natural' ? 
-                (currentLanguage === 'am' ? "NATURAL SCIENCE ፎልደር ጥያቄዎች" : "Natural Science Saved Exams") :
-                (currentLanguage === 'am' ? "SOCIAL SCIENCE ፎልደር ጥያቄዎች" : "Social Science Saved Exams");
-            
-            renderFolderExams();
-            nav('p-my-folder-list');
-        }
-
-        function renderFolderExams() {
-            const gridContainer = document.getElementById('custom-folder-exams-grid');
-            if (!gridContainer) return;
-            gridContainer.innerHTML = "";
-
-            let allExams = JSON.parse(localStorage.getItem("stored_pdf_exams_db_v2")) || {};
-            let folderExams = allExams[activeSelectedFolder] || {};
-
-            if (Object.keys(folderExams).length === 0) {
-                gridContainer.innerHTML = `<p style='color:#888; font-style:italic; grid-column: 1/-1; text-align:center;'>${TRANSLATIONS[currentLanguage].no_pdf_msg}</p>`;
-                return;
-            }
-
-            Object.keys(folderExams).forEach(examName => {
-                let examData = folderExams[examName];
-                
-                let div = document.createElement('div');
-                div.className = "sub-btn";
-                div.style.background = "rgba(255,255,255,0.05)";
-                div.style.padding = "4vh 2vw";
-                div.innerHTML = `<div><b>📄 ${examName}</b></div><div style="font-size:13px; color:#8b5cf6; margin-top:10px;">${examData.length} ${currentLanguage === 'am' ? 'ጥያቄዎች' : 'Questions'}</div>`;
-
-                let pressTimer;
-                const startPress = () => {
-                    pressTimer = setTimeout(() => {
-                        if (confirm(currentLanguage === 'am' ? `⚠️ '${examName}' የተባለውን የፒዲኤፍ ፈተና ከዚህ ፎልደር ማጥፋት ይፈልጋሉ?` : `⚠️ Are you sure you want to delete '${examName}'?`)) {
-                            deletePdfExam(examName);
-                        }
-                    }, 7000);
-                };
-                const cancelPress = () => clearTimeout(pressTimer);
-
-                div.addEventListener('mousedown', startPress);
-                div.addEventListener('mouseup', cancelPress);
-                div.addEventListener('mouseleave', cancelPress);
-                div.addEventListener('touchstart', startPress);
-                div.addEventListener('touchend', cancelPress);
-
-                div.addEventListener('click', (e) => {
-                    if(e.detail === 1) { 
-                        isCustomPdfMode = true;
-                        curSub = examName;
-                        startExam(examData);
-                    }
-                });
-
-                gridContainer.appendChild(div);
-            });
-        }
-
-        function deletePdfExam(name) {
-            let allExams = JSON.parse(localStorage.getItem("stored_pdf_exams_db_v2")) || {};
-            if (allExams[activeSelectedFolder] && allExams[activeSelectedFolder][name]) {
-                delete allExams[activeSelectedFolder][name];
-                localStorage.setItem("stored_pdf_exams_db_v2", JSON.stringify(allExams));
-                alert(currentLanguage === 'am' ? `🗑️ '${name}' በተሳካ ሁኔታ ተሰርዟል!` : `🗑️ '${name}' deleted!`);
-                renderFolderExams();
-            }
-        }
-
-        // ========================================================
-        // 🚀 100% OFFLINE SMART NLP TEXT EXTRACTOR & EXAM GENERATOR (UPDATED)
-        // ========================================================
-        async function processPdfExam() {
-            const fileInput = document.getElementById('customPdfFile');
-            const examNameInput = document.getElementById('pdfExamName');
-            const targetFolder = document.getElementById('pdfTargetFolder').value;
-            const difficulty = document.getElementById('customDifficulty').value;
-            const qCountInput = document.getElementById('pdfQCount');
-            const startChapterInput = document.getElementById('pdfStartChapter');
-            const endChapterInput = document.getElementById('pdfEndChapter');
-
-            let examName = examNameInput.value.trim();
-            let targetQCount = parseInt(qCountInput.value) || 100;
-            let startCh = parseInt(startChapterInput.value) || 1;
-            let endCh = parseInt(endChapterInput.value) || 10;
-
-            if (!examName) { alert(TRANSLATIONS[currentLanguage].err_name); return; }
-            if (fileInput.files.length === 0) { alert(TRANSLATIONS[currentLanguage].err_file); return; }
-
-            let allExams = JSON.parse(localStorage.getItem("stored_pdf_exams_db_v2")) || { Natural: {}, Social: {} };
-            if ((allExams.Natural && allExams.Natural[examName]) || (allExams.Social && allExams.Social[examName])) {
-                alert(TRANSLATIONS[currentLanguage].err_duplicate);
-                return;
-            }
-
-            alert(currentLanguage === 'am' ? `⚡ የ NLP ትንተና ተጀምሯል። ጽሑፉ በክፍሎች ተከፋፍሎ ከምዕራፍ ${startCh} - ${endCh} ያሉትን የኢንትራንስ ዓይነት ጥያቄዎች በ '${examName}' ስም ወደ ${targetFolder} ፎልደር እያዘጋጀ ነው...` : `⚡ NLP Analysis started. Extracting entrance-style questions to ${targetFolder} folder under '${examName}'...`);
-
-            const file = fileInput.files[0];
-            const fileReader = new FileReader();
-
-            fileReader.onload = async function() {
-                try {
-                    const typedarray = new Uint8Array(this.result);
-                    // Offline Worker Path ማስተካከያ
-                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
-                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
-                    
-                    let totalPages = pdf.numPages;
-                    let chaptersCount = (endCh - startCh) + 1;
-                    if(chaptersCount <= 0) chaptersCount = 5;
-                    let pagesPerChapter = Math.floor(totalPages / 10) || 1;
-                    
-                    let startPage = Math.max(1, (startCh - 1) * pagesPerChapter + 1);
-                    let endPage = Math.min(totalPages, endCh * pagesPerChapter);
-                    if (startPage > totalPages) startPage = 1;
-
-                    let pdfPagesData = [];
-                    for (let i = startPage; i <= endPage; i++) {
-                        const page = await pdf.getPage(i);
-                        const textContent = await page.getTextContent();
-                        let pageText = textContent.items.map(item => item.str).join(" ");
-                        pdfPagesData.push({ pageNum: i, text: pageText });
-                    }
-
-                    // ያወረድናቸውን የስማርት አልጎሪዝም ህጎች በመጠቀም ጥያቄ መፍጠር
-                    const generatedQuestions = generateDynamicPdfExam(pdfPagesData, difficulty, targetQCount, startCh, chaptersCount, pagesPerChapter);
-                    
-                    if(!allExams[targetFolder]) allExams[targetFolder] = {};
-                    allExams[targetFolder][examName] = generatedQuestions;
-                    localStorage.setItem("stored_pdf_exams_db_v2", JSON.stringify(allExams));
-
-                    alert(currentLanguage === 'am' ? `🎉 ስኬት! '${examName}' ፈተና በ ${targetFolder} ፎልደር ውስጥ ተቀምጧል።` : `🎉 Success! saved in ${targetFolder} folder.`);
-                    
-                    examNameInput.value = "";
-                    fileInput.value = "";
-                    qCountInput.value = "";
-                    startChapterInput.value = "";
-                    endChapterInput.value = "";
-
-                    isCustomPdfMode = true;
-                    curSub = examName;
-                    startExam(generatedQuestions);
-
-                } catch (error) {
-                    alert("PDF Process Error: " + error.message);
-                }
-            };
-            fileReader.readAsArrayBuffer(file);
-        }
-
-        // ========================================================
-        // 🧠 COMPROMISE.JS & STRING-SIMILARITY.JS SMART QUESTION ENGINE
-        // ========================================================
-        function generateDynamicPdfExam(pagesData, difficulty, targetQCount, initialChapter, chaptersCount, pagesPerChapter) {
-            let finalQuestionsList = [];
-            let targetPerChapter = Math.ceil(targetQCount / chaptersCount);
-            
-            // አጠቃላይ ፅሑፉን ለ String-similarity ማከማቻነት እናደራጀው
-            let globalWordsPool = [];
-            pagesData.forEach(p => {
-                let tokens = p.text.split(/\s+/).map(w => w.replace(/[^a-zA-Z]/g, "")).filter(w => w.length > 4);
-                globalWordsPool.push(...tokens);
-            });
-            globalWordsPool = [...new Set(globalWordsPool)]; // Duplicate ማጥፊያ
-
-            for (let ch = 0; ch < chaptersCount; ch++) {
-                let currentChapterNum = initialChapter + ch;
-                
-                // የዚህን ምዕራፍ ገጾች ብቻ ለይተን እንሰብስበው
-                let chStartPage = ((currentChapterNum - 1) * pagesPerChapter) + 1;
-                let chEndPage = currentChapterNum * pagesPerChapter;
-                
-                let chapterText = pagesData
-                    .filter(p => p.pageNum >= chStartPage && p.pageNum <= chEndPage)
-                    .map(p => p.text)
-                    .join(" ");
-
-                if (!chapterText.trim()) continue;
-
-                // 1. Compromise Sentences ን በመጠቀም አህጽሮተ ቃላትን ሳይበላሽ ዓረፍተ ነገር መለየት
-                let sentences = [];
-                if (typeof nlp !== 'undefined' && nlp.tokenize) {
-                    let doc = nlp(chapterText);
-                    sentences = doc.sentences().out('array');
+        function viewMyFolder(stream) {
+            const folderKey = `custom_exams_${stream}`;
+            localforage.getItem(folderKey).then(list => {
+                const grid = document.getElementById('custom-folder-exams-grid');
+                grid.innerHTML = "";
+                if(!list || list.length === 0) {
+                    grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:#94a3b8;">ምንም የተቀመጠ ፈተና የለም።</p>`;
                 } else {
-                    // Fallback መደበኛ ቆራጭ
-                    sentences = chapterText.split(/[.!?\n]+/).filter(s => s.trim().length > 40);
-                }
-
-                // የክብደት ማጣሪያ (Difficulty Filter)
-                let filteredSentences = sentences.filter(s => {
-                    if (difficulty == "20") return s.length < 80;
-                    if (difficulty == "50") return s.length >= 80 && s.length < 150;
-                    return s.length >= 150;
-                });
-
-                let sourceSentences = filteredSentences.length >= targetPerChapter ? filteredSentences : sentences;
-                sourceSentences.sort(() => Math.random() - 0.5);
-                
-                let addedInChapter = 0;
-
-                for (let i = 0; i < sourceSentences.length; i++) {
-                    if (addedInChapter >= targetPerChapter || finalQuestionsList.length >= targetQCount) break;
-
-                    let sentence = sourceSentences[i].trim();
-                    let words = sentence.split(/\s+/);
-                    if (words.length < 10) continue;
-
-                    // ቁልፍ ቃል የመምረጫ ሎጂክ
-                    let blankIndex = -1;
-                    for (let wIdx = Math.floor(words.length * 0.2); wIdx < Math.floor(words.length * 0.8); wIdx++) {
-                        let cleanW = words[wIdx].replace(/[^a-zA-Z]/g, "");
-                        if (cleanW.length > 5 && !["which", "there", "their", "would", "should", "about", "these"].includes(cleanW.toLowerCase())) {
-                            blankIndex = wIdx;
-                            break;
-                        }
-                    }
-                    if (blankIndex === -1) continue;
-
-                    let correctAnswer = words[blankIndex].replace(/[,.:;()'"embedded’”]/g, "");
-                    words[blankIndex] = "_______";
-                    let questionText = words.join(" ");
-
-                    // 2. String-Similarity በመጠቀም የተቀራረቡ የስህተት ምርጫዎችን ማመንጨት
-                    let wrongOptions = [];
-                    if (typeof stringSimilarity !== 'undefined' && stringSimilarity.findBestMatch) {
-                        // ከዋናው የቃላት ባንክ ውስጥ ተመሳሳይ ፊደላት ያላቸውን ፈልግ
-                        let matches = stringSimilarity.findBestMatch(correctAnswer, globalWordsPool);
-                        let sortedMatches = matches.ratings
-                            .filter(m => m.target.toLowerCase() !== correctAnswer.toLowerCase() && m.target.length > 3)
-                            .sort((a, b) => b.rating - a.rating)
-                            .slice(0, 15);
+                    list.forEach((ex, idx) => {
+                        const item = document.createElement('div');
+                        item.className = "sub-btn";
+                        item.style.borderLeft = "4px solid var(--correct) !important";
+                        item.innerText = ex.name.toUpperCase() + ` (${ex.questions.length} Qs)`;
                         
-                        if(sortedMatches.length >= 3) {
-                            // ምርጥ 3 የተቀራረቡ ቃላትን ምርጫ እናድርግ
-                            wrongOptions = [sortedMatches[0].target, sortedMatches[1].target, sortedMatches[2].target];
-                        }
-                    } 
-                    
-                    // ከተበላሸ ወይም ላይብረሪው ካልተጫነ ፎልባክ ቃላት መተኪያ
-                    if (wrongOptions.length < 3) {
-                        wrongOptions = [
-                            words[0].replace(/[^a-zA-Z]/g, "") || "Concept",
-                            words[words.length - 1].replace(/[^a-zA-Z]/g, "") || "Theory",
-                            "General Application"
-                        ];
-                    }
-
-                    let optsArray = [`**${correctAnswer}`, wrongOptions[0], wrongOptions[1], wrongOptions[2]];
-                    optsArray.sort(() => Math.random() - 0.5);
-
-                    finalQuestionsList.push({
-                        q: `[Chapter ${currentChapterNum}] ${questionText}`,
-                        opts: optsArray
+                        let timerId = null;
+                        item.onmousedown = () => {
+                            timerId = setTimeout(() => {
+                                if(confirm(`እርግጠኛ ነህ "${ex.name}" የሚለውን ፈተና ከዳታቤዝ መሰረዝ ትፈልጋለህ?`)) {
+                                    list.splice(idx, 1);
+                                    localforage.setItem(folderKey, list).then(() => viewMyFolder(stream));
+                                }
+                            }, 7000);
+                        };
+                        item.onmouseup = () => clearTimeout(timerId);
+                        item.onmouseleave = () => clearTimeout(timerId);
+                        item.onclick = () => {
+                            if(timerId) clearTimeout(timerId);
+                            launchCustomExamPool(ex.questions, ex.name);
+                        };
+                        grid.appendChild(item);
                     });
+                }
+                nav('p-my-folder-list');
+            });
+        }
 
-                    addedInChapter++;
+        function openPdfPanel() {
+            nav('p-pdf-panel');
+        }
+
+        // 2. OCR Sustained Canvas Mapping Workspace Activation
+        document.getElementById('ocrImageFile')?.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                const img = new Image();
+                img.onload = async function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    
+                    alert("የምስል OCR ኢንጂን ንቁ ሆኗል... እባክህ ትንሽ ጠብቅ");
+                    const extractedText = await runOfflineOCR(canvas);
+                    EXAM_SUITE_STATE.pdfTextStore += "\n" + extractedText;
+                    alert("OCR በተሳካ ሁኔታ ተጠናቋል። ፅሁፉ ወደ AI ማመንጫ ማከማቻው ተካቷል።");
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // 3. Automated Advanced PDF Text Extractor Engine Pipeline Map
+        function processPdfExam() {
+            const fileInput = document.getElementById('customPdfFile');
+            const examName = document.getElementById('pdfExamName').value || "ያልተሰየመ AI ፈተና";
+            const folder = document.getElementById('pdfTargetFolder').value;
+            const diff = document.getElementById('customDifficulty').value;
+            const bloom = document.getElementById('customBloomLevel').value;
+            const count = parseInt(document.getElementById('pdfQCount').value) || 10;
+            
+            const startCh = parseInt(document.getElementById('pdfStartChapter').value) || null;
+            const endCh = parseInt(document.getElementById('pdfEndChapter').value) || null;
+
+            if(!fileInput.files[0] && !EXAM_SUITE_STATE.pdfTextStore) {
+                alert("እባክህ ፒዲኤፍ ፋይል ምረጥ ወይም ምስል በ OCR ስካን አድርግ!");
+                return;
+            }
+
+            if(fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const typedarray = new Uint8Array(e.target.result);
+                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+                        let totalPages = pdf.numPages;
+                        let textPromises = [];
+                        for(let i=1; i<=totalPages; i++) {
+                            textPromises.push(pdf.getPage(i).then(page => page.getTextContent().then(content => {
+                                return content.items.map(item => item.str).join(" ");
+                            })));
+                        }
+                        Promise.all(textPromises).then(pagesText => {
+                            let fullText = pagesText.join("\n");
+                            EXAM_SUITE_STATE.pdfTextStore += "\n" + fullText;
+                            executeTextToExamPipeline(examName, folder, diff, bloom, count, startCh, endCh);
+                        });
+                    });
+                };
+                reader.readAsArrayBuffer(fileInput.files[0]);
+            } else {
+                executeTextToExamPipeline(examName, folder, diff, bloom, count, startCh, endCh);
+            }
+        }
+
+        function executeTextToExamPipeline(name, folder, diff, bloom, count, startCh, endCh) {
+            let chunks = EXAM_SUITE_STATE.pdfTextStore.split(/[.!?]\s+/);
+            EXAM_SUITE_STATE.activeQuestions = [];
+
+            chunks.forEach(chunk => {
+                if(chunk.trim().length > 30) {
+                    let q = processRawTextToQuestions(chunk, diff, 'multiple-choice', bloom);
+                    if(q) {
+                        // የ Chapter Range ማጣሪያ ሎጂክ
+                        let match = q.chapter.match(/\d+/);
+                        let chNum = match ? parseInt(match[0]) : null;
+                        
+                        let passRange = true;
+                        if(startCh && chNum && chNum < startCh) passRange = false;
+                        if(endCh && chNum && chNum > endCh) passRange = false;
+
+                        if(passRange) {
+                            EXAM_SUITE_STATE.activeQuestions.push(q);
+                        }
+                    }
+                }
+            });
+
+            if(EXAM_SUITE_STATE.activeQuestions.length === 0) {
+                alert("ካቀረብከው ፅሁፍ ላይ ጥያቄዎችን ማመንጨት አልተቻለም። እባክህ ሰፋ ያለ ይዘት ያለው ፋይል ተጠቀም።");
+                return;
+            }
+
+            let paper = buildExamPaper({count: count, difficulty: diff});
+            
+            const folderKey = `custom_exams_${folder}`;
+            localforage.getItem(folderKey).then(list => {
+                if(!list) list = [];
+                list.push({
+                    name: name,
+                    questions: paper.questions
+                });
+                localforage.setItem(folderKey, list).then(() => {
+                    alert(`የላቀ የ AI ፈተና ማመንጨት ተጠናቋል! "${name}" በቋሚነት ${folder} ውስጥ ተቀምጧል። ጠቅላላ የወጡ ጥያቄዎች፡ ${paper.questions.length}`);
+                    EXAM_SUITE_STATE.pdfTextStore = ""; // ማከማቻውን ማጽዳት
+                    viewMyFolder(folder);
+                });
+            });
+        }
+
+        function launchCustomExamPool(questionsList, title) {
+            QUESTIONS_POOL = questionsList;
+            document.getElementById('exam-title-txt').innerText = title.toUpperCase();
+            startExamWorkspace();
+        }
+
+        function launchExamDirectly(subject, round) {
+            const key = `${subject.toLowerCase().replace(" ", "_")}_db`;
+            if(window[key]) {
+                QUESTIONS_POOL = window[key].filter(q => q.round === round || round === 'Model Paper');
+                if(QUESTIONS_POOL.length === 0) QUESTIONS_POOL = window[key];
+            } else {
+                QUESTIONS_POOL = [];
+                for(let i=1; i<=100; i++) {
+                    QUESTIONS_POOL.push({
+                        id: i, question: `Sample Question ${i} for ${subject} (${round})`,
+                        options: ["Choice A", "Choice B", "Choice C", "Choice D"], answer: "Choice A", explanation: "Sample breakdown text."
+                    });
                 }
             }
-
-            // የመሙያ ጥያቄዎች (ተማሪው የጠየቀው ቁጥር እስኪሞላ)
-            while (finalQuestionsList.length < targetQCount) {
-                finalQuestionsList.push({
-                    q: currentLanguage === 'am' ? `[ክለሳ] ከዚህ ከተመረጠው የመማሪያ ክፍል ይዘት መረዳት እንደሚቻለው የተሰጠው አረፍተ ነገር ________ ነው።` : `[Review] Based on the context of this material, the given statement is ________.`,
-                    opts: [currentLanguage === 'am' ? `**እውነት` : `**True`, currentLanguage === 'am' ? `ሀሰት` : `False`, currentLanguage === 'am' ? `ሁሉም መልስ ነው` : `All`, currentLanguage === 'am' ? `መልስ የለም` : `None`]
-                });
-            }
-
-            return finalQuestionsList.slice(0, targetQCount);
+            document.getElementById('exam-title-txt').innerText = `${subject} - ${round}`.toUpperCase();
+            startExamWorkspace();
         }
 
-        function autoDetectChapter(questionObj) {
-            let directMatch = questionObj.q.match(/\[(?:Chapter|ምዕራፍ)\s*(\d+)\]/i);
-            if (directMatch) return "Chapter " + directMatch[1];
-            if (questionObj.ch) return questionObj.ch;
-            return "Chapter 1: Fundamental Concepts";
-        }
-
-        function startExam(questions) {
-            examSet = JSON.parse(JSON.stringify(questions)); 
-            userAns = new Array(examSet.length).fill(null);
-            qIdx = 0;
+        function startExamWorkspace() {
+            CURRENT_Q_INDEX = 0;
+            USER_ANSWERS = {};
+            TIME_LEFT = 7200;
+            EXAM_START_TIME = Date.now();
             
-            if(isCustomPdfMode) {
-                document.getElementById('exam-title-txt').innerText = `${curSub} - ${TRANSLATIONS[currentLanguage].exam_title_pdf}`;
-            } else {
-                document.getElementById('exam-title-txt').innerText = `${curSub} - ${TRANSLATIONS[currentLanguage].exam_title_normal}`;
-            }
+            renderNavigationNavigator();
+            showQuestionIndex(0);
             
-            buildDotGrid();
-            showQ();
-            startTimer(120 * 60); 
+            clearInterval(EXAM_TIMER);
+            EXAM_TIMER = setInterval(() => {
+                if(TIME_LEFT <= 0) {
+                    clearInterval(EXAM_TIMER);
+                    submitExam();
+                } else {
+                    TIME_LEFT--;
+                    let hrs = Math.floor(TIME_LEFT / 3600).toString().padStart(2, '0');
+                    let mins = Math.floor((TIME_LEFT % 3600) / 60).toString().padStart(2, '0');
+                    let secs = (TIME_LEFT % 60).toString().padStart(2, '0');
+                    document.getElementById('timer-box').innerText = `${hrs}:${mins}:${secs}`;
+                }
+            }, 1000);
+            
             nav('p-exam');
         }
 
-        function buildDotGrid() {
-            const grid = document.getElementById('dot-grid'); grid.innerHTML = "";
-            examSet.forEach((_, i) => {
-                let dot = document.createElement('div');
-                dot.className = "q-dot"; dot.id = "dot-" + i; dot.innerText = i + 1;
-                dot.onclick = () => jumpToQ(i);
+        function renderNavigationNavigator() {
+            const grid = document.getElementById('dot-grid');
+            grid.innerHTML = "";
+            QUESTIONS_POOL.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = "q-dot";
+                dot.id = `dot-${idx}`;
+                dot.innerText = idx + 1;
+                dot.onclick = () => showQuestionIndex(idx);
                 grid.appendChild(dot);
             });
         }
 
-        function showQ() {
-            document.getElementById('progress-txt').innerText = `${currentLanguage === 'am' ? 'ጥያቄ' : 'Question'} ${qIdx + 1} / ${examSet.length}`;
-            
+        function showQuestionIndex(index) {
+            CURRENT_Q_INDEX = index;
             document.querySelectorAll('.q-dot').forEach(d => d.classList.remove('active'));
-            const curDot = document.getElementById('dot-' + qIdx);
+            
+            const curDot = document.getElementById(`dot-${index}`);
             if(curDot) curDot.classList.add('active');
-
-            let item = examSet[qIdx];
-            document.getElementById('q-text').innerText = item.q;
-
-            const optBox = document.getElementById('opt-box'); optBox.innerHTML = "";
-            let alpha = ['A', 'B', 'C', 'D'];
-            item.opts.forEach((optStr, i) => {
-                let cleanOpt = optStr.replace(/\*\規/g, '').replace(/\*\**/g, '');
-                let card = document.createElement('div');
-                card.className = "opt-card" + (userAns[qIdx] === i ? " selected" : "");
-                card.onclick = () => selOpt(i);
-                card.innerHTML = `<div class="opt-badge">${alpha[i]}</div><span>${cleanOpt}</span>`;
+            
+            document.getElementById('progress-txt').innerText = `ጥያቄ ${index + 1} / ${QUESTIONS_POOL.length}`;
+            
+            const q = QUESTIONS_POOL[index];
+            document.getElementById('q-text').innerText = q.question;
+            
+            const optBox = document.getElementById('opt-box');
+            optBox.innerHTML = "";
+            
+            q.options.forEach((opt, idx) => {
+                const prefix = String.fromCharCode(65 + idx);
+                const card = document.createElement('div');
+                card.className = "opt-card";
+                if(USER_ANSWERS[q.id] === opt) card.classList.add('selected');
+                
+                card.onclick = () => {
+                    USER_ANSWERS[q.id] = opt;
+                    document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    
+                    const dot = document.getElementById(`dot-${index}`);
+                    if(dot) {
+                        dot.classList.remove('skipped');
+                        dot.classList.add('answered');
+                    }
+                };
+                
+                card.innerHTML = `<div class="opt-badge">${prefix}</div><div style="flex:1;">${opt}</div>`;
                 optBox.appendChild(card);
             });
         }
 
-        function selOpt(i) {
-            userAns[qIdx] = i;
-            const curDot = document.getElementById('dot-' + qIdx);
-            if(curDot) { curDot.classList.remove('skipped'); curDot.classList.add('answered'); }
-            showQ();
-        }
-
         function nextQ() {
-            if(userAns[qIdx] === null) {
-                const curDot = document.getElementById('dot-' + qIdx);
-                if(curDot && !curDot.classList.contains('answered')) curDot.classList.add('skipped');
+            if(CURRENT_Q_INDEX < QUESTIONS_POOL.length - 1) {
+                const q = QUESTIONS_POOL[CURRENT_Q_INDEX];
+                if(!USER_ANSWERS[q.id]) {
+                    const dot = document.getElementById(`dot-${CURRENT_Q_INDEX}`);
+                    if(dot && !dot.classList.contains('answered')) dot.classList.add('skipped');
+                }
+                showQuestionIndex(CURRENT_Q_INDEX + 1);
             }
-            if(qIdx < examSet.length - 1) { qIdx++; showQ(); }
         }
 
         function prevQ() {
-            if(qIdx > 0) { qIdx--; showQ(); }
-        }
-
-        function jumpToQ(i) {
-            if(userAns[qIdx] === null) {
-                const curDot = document.getElementById('dot-' + qIdx);
-                if(curDot && !curDot.classList.contains('answered')) curDot.classList.add('skipped');
+            if(CURRENT_Q_INDEX > 0) {
+                showQuestionIndex(CURRENT_Q_INDEX - 1);
             }
-            qIdx = i; showQ();
         }
-
-        function startTimer(duration) {
-            clearInterval(timer);
-            let t = duration;
-            const box = document.getElementById('timer-box');
-            timer = setInterval(() => {
-                let h = Math.floor(t / 3600);
-                let m = Math.floor((t % 3600) / 60);
-                let s = t % 60;
-                box.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-                if(--t < 0) { clearInterval(timer); submitExam(); }
-            }, 1000);
-        }
-
-        window.addEventListener('keydown', (e) => {
-            const examPage = document.getElementById('p-exam');
-            if(!examPage.classList.contains('active')) return;
-
-            if(e.key === 'ArrowRight') nextQ();
-            if(e.key === 'ArrowLeft') prevQ();
-            
-            let keyMap = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
-            if(keyMap[e.key] !== undefined) selOpt(keyMap[e.key]);
-        });
 
         function submitExam() {
-            clearInterval(timer);
-            let score = 0;
-            let weakChapters = {};
-
-            examSet.forEach((item, i) => {
-                let correctIdx = item.opts.findIndex(o => o.includes('**'));
-                let isCorrect = userAns[i] === correctIdx;
-                if(isCorrect) {
-                    score++;
-                } else {
-                    let chName = autoDetectChapter(item);
-                    weakChapters[chName] = (weakChapters[chName] || 0) + 1;
-                }
+            clearInterval(EXAM_TIMER);
+            let correctCount = 0;
+            QUESTIONS_POOL.forEach(q => {
+                if(USER_ANSWERS[q.id] === q.answer) correctCount++;
             });
             
-            let percent = Math.round((score / examSet.length) * 100);
-            localStorage.setItem('last_score_pct', percent);
-            localStorage.setItem('last_sub_played', curSub);
-            localStorage.setItem('last_weak_zones', JSON.stringify(weakChapters));
-
-            let history = JSON.parse(localStorage.getItem('exam_history') || '[]');
-            history.push({ subject: curSub, pct: percent, timestamp: new Date().getTime() });
-            localStorage.setItem('exam_history', JSON.stringify(history));
+            let durationMins = Math.floor((Date.now() - EXAM_START_TIME) / 60000);
+            let percent = Math.round((correctCount / QUESTIONS_POOL.length) * 100);
             
-            document.getElementById('score-txt').innerText = `${score} / ${examSet.length}`;
+            document.getElementById('score-badge').innerText = `${correctCount} / ${QUESTIONS_POOL.length}`;
+            document.getElementById('res-percent').innerText = `${percent}%`;
+            document.getElementById('res-time').innerText = `የፈጀው ጊዜ፦ ${durationMins} ደቂቃ`;
+            
+            // የኮች ትንታኔ መረጃዎችን ማስቀመጥ
+            let examRecord = {
+                subject: SELECTED_SUBJECT || "Custom PDF Paper",
+                score: percent,
+                date: new Date().toLocaleDateString(),
+                answers: USER_ANSWERS,
+                pool: QUESTIONS_POOL
+            };
+            
+            localforage.getItem('exam_history_logs').then(history => {
+                if(!history) history = [];
+                history.push(examRecord);
+                localforage.setItem('exam_history_logs', history);
+            });
+            
             nav('p-result');
         }
 
-        function showReview() {
-            const list = document.getElementById('review-list'); list.innerHTML = "";
-            let dict = TRANSLATIONS[currentLanguage];
-            examSet.forEach((item, i) => {
-                let correctIdx = item.opts.findIndex(o => o.includes('**'));
-                let correctText = item.opts[correctIdx].replace(/\*/g, '').replace(/\*\**/g, '');
-                let userText = userAns[i] !== null ? item.opts[userAns[i]].replace(/\*\**/g, '') : dict.review_un;
-                let isCorrect = userAns[i] === correctIdx;
-
-                let div = document.createElement('div');
-                div.className = "review-item";
-                div.style.borderLeft = isCorrect ? "5px solid var(--correct)" : "5px solid var(--wrong)";
+        function loadReviewPage() {
+            const container = document.getElementById('review-list-container');
+            container.innerHTML = "";
+            
+            QUESTIONS_POOL.forEach((q, idx) => {
+                const userAns = USER_ANSWERS[q.id] || "ያልተመለሰ";
+                const isCorrect = userAns === q.answer;
                 
-                div.innerHTML = `
-                    <p style="font-weight:bold; color:var(--accent);">${dict.review_q} ${i+1}: ${item.q}</p>
-                    <p style="color:${isCorrect ? 'var(--correct)' : 'var(--wrong)'}">
-                        ${dict.review_u} <b>${userText}</b>
-                    </p>
-                    ${!isCorrect ? `<p style="color:var(--correct)">${dict.review_c} <b>${correctText}</b></p>` : ""}
+                const item = document.createElement('div');
+                item.className = "review-item";
+                item.style.borderLeft = isCorrect ? "5px solid var(--correct) !important" : "5px solid var(--wrong) !important";
+                
+                item.innerHTML = `
+                    <h4 style="text-align:left; font-size:16px; margin-bottom:1.5 block; line-height:1.5; color:white;">${idx + 1}. ${q.question}</h4>
+                    <p style="margin-top:10px; font-size:14px;"> ያንተ መልስ፦ <span style="color:${isCorrect ? 'var(--correct)' : 'var(--wrong)'}; font-weight:bold;">${userAns}</span></p>
+                    <p style="font-size:14px;"> ትክክለኛ መልስ፦ <span style="color:var(--correct); font-weight:bold;">${q.answer}</span></p>
+                    <div style="margin-top:15px; padding:15px; background:rgba(255,255,255,0.02); border-radius:8px; font-size:14px; color:#94a3b8; border-top:1px solid rgba(255,255,255,0.05) !important;">
+                        <b>💡 ማብራሪያ (Breakdown)፦</b> ${q.explanation || 'ምንም ዝርዝር መግለጫ አልተያያዘም።'}
+                    </div>
                 `;
-                list.appendChild(div);
+                container.appendChild(item);
             });
             nav('p-review');
         }
 
         function loadAIAnalytics() {
-            let lastPct = localStorage.getItem('last_score_pct');
-            let lastSub = localStorage.getItem('last_sub_played');
-            let weakZones = JSON.parse(localStorage.getItem('last_weak_zones') || '{}');
-            let history = JSON.parse(localStorage.getItem('exam_history') || '[]');
-
-            if(!lastPct) {
-                let emptyMsg = currentLanguage === 'am' ? "እስካሁን ምንም የፈተና መረጃ የለም! እባክዎ መጀመሪያ አንድ ፈተና ሰርተው ያጠናቅቁ。" : "No exam history found! Please complete at least one exam first.";
-                document.getElementById('ai-coach-msg').innerText = emptyMsg;
-                nav('p-analytics');
-                return;
-            }
-
-            let coachMsg = "";
-            if (currentLanguage === 'am') {
-                if(lastPct >= 85) {
-                    coachMsg = `🔥 ድንቅ ስራ ነው! በ ${lastSub} ፈተና ${lastPct}% አምጥተሃል። ይህ በጣም ምርጥ እና አስተማማኝ ውጤት ነው። አሁን ያለህን ጥንካሬ ይዘህ ወደ ቀጣይ ምዕራፎች ማለፍ ትችላለህ። በርታ!`;
-                } else if(lastPct >= 50) {
-                    coachMsg = `⚡ መጥፎ አይደለም፣ በ ${lastSub} ፈተና ${lastPct}% አግኝተሃል። ነገር ግን ይበልጥ ማሻሻል የምትችልባቸው ክፍተቶች አሉ። ጥቂት ያመለጡህን ነጥቦች በድጋሚ ብታይ ውጤትህ የላቀ ይሆናል።`;
-                } else {
-                    coachMsg = `📉 አይዞህ ተስፋ አትቁረጥ! በ ${lastSub} ያመጣኸው ${lastPct}% ነው። ይህ ማለት አንዳንድ ጽንሰ-ሀሳቦችን በደንብ መከለስ አለብህ ማለት ነው። ከስር በተሰጠህ የጥናት እቅድ መሰረት ዛሬውኑ ክለሳ ጀምር!`;
+            localforage.getItem('exam_history_logs').then(history => {
+                if(!history || history.length === 0) {
+                    alert("የ AI ረዳቱ ትንታኔ ለመስራት መጀመሪያ ቢያንስ አንድ ፈተና ማጠናቀቅ አለብህ!");
+                    return;
                 }
-            } else {
-                if(lastPct >= 85) {
-                    coachMsg = `🔥 Excellent work! You scored ${lastPct}% in ${lastSub}. Keep maintaining this exceptional standard and proceed confidently!`;
-                } else if(lastPct >= 50) {
-                    coachMsg = `⚡ Fair effort, you scored ${lastPct}% in ${lastSub}. You have a solid baseline but there's room for improvement.`;
-                } else {
-                    coachMsg = `📉 Don't give up! Your score in ${lastSub} is ${lastPct}%. This means you need to revisit the core concepts immediately.`;
-                }
-            }
-            document.getElementById('ai-coach-msg').innerText = coachMsg;
-
-            let historyHtml = "";
-            let sameSubHistory = history.filter(h => h.subject === lastSub);
-            
-            if (sameSubHistory.length >= 2) {
-                let currentRun = sameSubHistory[sameSubHistory.length - 1];
-                let previousRun = sameSubHistory[sameSubHistory.length - 2];
-                let diff = currentRun.pct - previousRun.pct;
                 
-                if (currentLanguage === 'am') {
-                    if (diff > 0) {
-                        historyHtml = `<p style="color:var(--correct); font-weight:bold;">🚀 ካለፈው ጨምረሃል! ውጤትህ በ <b>+${diff}%</b> አድጓል። (ከ ${previousRun.pct}% ወደ ${currentRun.pct}%)። ያሳየኸው መሻሻል እውነተኛ ነው።</p>`;
-                    } else if (diff < 0) {
-                        historyHtml = `<p style="color:var(--wrong); font-weight:bold;">📉 ውጤትህ ቀንሷል! ካለፈው ፈተና በ <b>${diff}%</b> አሽቆልቁሏል። (ከ ${previousRun.pct}% ወደ ${currentRun.pct}%)። ትኩረት ሰጥተህ ድክመትህን ፈትሽ።</p>`;
-                    } else {
-                        historyHtml = `<p style="color:var(--accent); font-weight:bold;">⚖️ ለውጥ የለም! ልክ እንደ ባለፈው ፈተና አሁንም <b>${currentRun.pct}%</b> አምጥተሃል። ረገጣውን ለመስበር ተጨማሪ ጥረት ያስፈልጋል።</p>`;
-                    }
-                } else {
-                    if (diff > 0) {
-                        historyHtml = `<p style="color:var(--correct); font-weight:bold;">🚀 Improved! Your score increased by <b>+${diff}%</b> (from ${previousRun.pct}% to ${currentRun.pct}%). Excellent trajectory!</p>`;
-                    } else if (diff < 0) {
-                        historyHtml = `<p style="color:var(--wrong); font-weight:bold;">📉 Performance Drop! Your score decreased by <b>${diff}%</b> (from ${previousRun.pct}% to ${currentRun.pct}%). Review immediately.</p>`;
-                    } else {
-                        historyHtml = `<p style="color:var(--accent); font-weight:bold;">⚖️ Stagnant Profile! Your score remains at <b>${currentRun.pct}%</b>. Push harder to break the threshold.</p>`;
-                    }
-                }
-            } else {
-                historyHtml = currentLanguage === 'am' ? 
-                    `<p style="color:#94a3b8;">ይህ ለ <b>${lastSub}</b> የመጀመሪያህ ፈተና ስለሆነ ንፅፅር ለመስራት ቀጣይ ሌላ ፈተና ስራ።</p>` :
-                    `<p style="color:#94a3b8;">First attempt for ${lastSub}. Complete another round to unlock comparative progression graphs.</p>`;
-            }
-            document.getElementById('ai-progress-history-list').innerHTML = historyHtml;
-
-            let weakHtml = "<ul>";
-            let entries = Object.entries(weakZones);
-            if(entries.length === 0) {
-                weakHtml = currentLanguage === 'am' ? "<p style='color:var(--correct); font-weight:bold;'>🎉 ድንቅ ነው! ምንም ጉልህ የድክመት ቀጠና አልተገኘም።</p>" : "<p style='color:var(--correct); font-weight:bold;'>🎉 Outstanding! No critical weak chapters detected.</p>";
-            } else {
-                entries.sort((a,b) => b[1] - a[1]);
-                entries.forEach(([ch, count]) => {
-                    weakHtml += `<li style='margin-bottom:1vh;'>📍 <b>${ch}</b>፦ <span style="color:var(--wrong); font-weight:bold;">${count} ${currentLanguage === 'am' ? 'ጥያቄ ተሳስተሃል' : 'questions missed'}</span></li>`;
+                let totalExams = history.length;
+                let sumScores = history.reduce((acc, curr) => acc + curr.score, 0);
+                let avg = Math.round(sumScores / totalExams);
+                
+                document.getElementById('stat-total-exams').innerText = totalExams;
+                document.getElementById('stat-avg-score').innerText = `${avg}%`;
+                
+                let subjectScores = {};
+                history.forEach(rec => {
+                    if(!subjectScores[rec.subject]) subjectScores[rec.subject] = [];
+                    subjectScores[rec.subject].push(rec.score);
                 });
-                weakHtml += "</ul>";
-            }
-            document.getElementById('ai-weak-list').innerHTML = weakHtml;
+                
+                let strong = [];
+                let weak = [];
+                let topWeakChapter = "Chapter 2 Mechanics";
+                let lastSub = "General Study";
 
-            let subScores = {};
-            history.forEach(h => {
-                if(!subScores[h.subject]) subScores[h.subject] = { total: 0, count: 0 };
-                subScores[h.subject].total += h.pct;
-                subScores[h.subject].count++;
-            });
-
-            let bestSub = ""; let maxAvg = 0;
-            Object.keys(subScores).forEach(s => {
-                let avg = subScores[s].total / subScores[s].count;
-                if(avg > maxAvg) { maxAvg = avg; bestSub = s; }
-            });
-
-            let careerText = currentLanguage === 'am' ? "ተጨማሪ ፈተናዎችን ስትሰራ ሙያዊ ምክሩ ይበልጥ ትክክለኛ እየሆነ ይሄዳል።" : "Complete more tests to generate accurate specialized career mapping data.";
-            if(bestSub) {
-                let sLower = bestSub.toLowerCase();
-                if (currentLanguage === 'am') {
-                    if(['maths', 'physics', 'chemistry'].some(x => sLower.includes(x))) {
-                        careerText = `ከፍተኛው አማካይ ውጤትህ በ <b>${bestSub.toUpperCase()}</b> ነው (${Math.round(maxAvg)}%)። የወደፊት ሙያህ በ <b>Engineering, Computer Science, Cybersecurity ወይም Technology</b> ዘርፎች ቢሆን ትልቅ ስኬት ታስመዘግባለህ።`;
-                    } else if(['biology'].some(x => sLower.includes(x))) {
-                        careerText = `ከፍተኛው አማካይ ውጤትህ በ <b>${bestSub.toUpperCase()}</b> ነው (${Math.round(maxAvg)}%)። የወደፊት ስራህ በ <b>Medicine, Health Sciences, Pharmacy ወይም Biotechnology</b> መስኮች ቢሆን ትልቅ የፈጠራ ሰው ትሆናለህ።`;
-                    } else {
-                        careerText = `በ <b>${bestSub.toUpperCase()}</b> ላይ አስደናቂ አፈጻጸም እያሳየህ ነው። ይህንን በማጠናከር በቢዝነስ፣ ኢኮኖሚክስ እና ተያያዥ የማህበራዊ ሳይንስ ዘርፎች ላይ ማተኮር ትችላለህ።`;
-                    }
-                } else {
-                    if(['maths', 'physics', 'chemistry'].some(x => sLower.includes(x))) {
-                        careerText = `Your peak average score is in <b>${bestSub.toUpperCase()}</b> (${Math.round(maxAvg)}%). Your cognitive performance points directly towards excellence in <b>Engineering, Computer Science, or Cybersecurity</b>.`;
-                    } else if(['biology'].some(x => sLower.includes(x))) {
-                        careerText = `Your peak average score is in <b>${bestSub.toUpperCase()}</b> (${Math.round(maxAvg)}%). Your profile aligns perfectly with vocational tracks in <b>Medicine or Bio-Medical Research</b>.`;
-                    } else {
-                        careerText = `You are performing strongly in <b>${bestSub.toUpperCase()}</b>. This forms an exceptional background for leadership in Economics or Business Management.`;
-                    }
+                for(let sub in subjectScores) {
+                    lastSub = sub;
+                    let subAvg = subjectScores[sub].reduce((a,b)=>a+b, 0) / subjectScores[sub].length;
+                    if(subAvg >= 75) strong.push(`${sub.toUpperCase()} (${Math.round(subAvg)}%)`);
+                    else weak.push(`${sub.toUpperCase()} (${Math.round(subAvg)}%)`);
                 }
-            }
-            document.getElementById('ai-career-txt').innerHTML = careerText;
-
-            let topWeakChapter = entries[0] ? entries[0][0] : (currentLanguage === 'am' ? "አጠቃላይ ይዘቶች ክለሳ" : "Core Revision Areas");
-            let planHtml = "";
-            
-            if (currentLanguage === 'am') {
-                planHtml = `
-                    <p style="margin-bottom: 15px; color: #fbbf24; font-weight:500;">⚠️ <u>ምክር፡</u> በፈተናው ላይ በከፍተኛ ሁኔታ የተሳሳትከው <b>${topWeakChapter}</b> ላይ ስለሆነ መጽሐፍህን ገልጠህ ይህንን ምዕራፍ በጥልቀት አንብብ!</p>
-                    <table style="width:100%; border-collapse: collapse; text-align: left; font-size:15px; margin-top:10px;">
-                        <tr style="border-bottom: 2px solid rgba(255,255,255,0.2); color:#fbbf24; font-weight:bold;">
-                            <th style="padding:10px;">ቀን</th>
-                            <th style="padding:10px;">የማጠናከሪያ ርዕስ (Focus Topic)</th>
-                            <th style="padding:10px;">የጥናት ሰዓት</th>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:10px;">ሰኞ - ረቡዕ</td>
-                            <td style="padding:10px; color:var(--wrong); font-weight:500;">📖 የደከምክበትን ምዕራፍ [ ${topWeakChapter} ] በደንብ አንብብ</td>
-                            <td style="padding:10px;">1 ሰዓት ከ 30 ደቂቃ / ቀን</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:10px;">ሐሙስ - ቅዳሜ</td>
-                            <td style="padding:10px; color:var(--correct); font-weight:500;">📝 ቀጣይ አዲስ የ ${lastSub} ዓመተ-ምህረት ፈተና በሲስተሙ ድገም</td>
-                            <td style="padding:10px;">2 ሰዓት / ቀን</td>
-                        </tr>
-                    </table>
-                `;
-            } else {
-                planHtml = `
-                    <p style="margin-bottom: 15px; color: #fbbf24; font-weight:500;">⚠️ <u>Recommendation:</u> You had critical errors in <b>${topWeakChapter}</b>. Please open your textbook and revise this area extensively.</p>
-                    <table style="width:100%; border-collapse: collapse; text-align: left; font-size:15px; margin-top:10px;">
+                
+                document.getElementById('stat-strong-subjects').innerHTML = strong.length > 0 ? strong.join("<br>") : "እስካሁን 75% በላይ ያመጣህበት ዘርፍ የለም። ጠንክረው ያጥኑ!";
+                document.getElementById('stat-weak-subjects').innerHTML = weak.length > 0 ? weak.join("<br>") : "በጣም ምርጥ! ሁሉም የትምህርት ዘርፎች ላይ ከፍተኛ ውጤት አለህ።";
+                
+                let planHtml = `
+                    <table style="width:100%; border-collapse:collapse; text-align:left; font-size:15px; margin-top:10px;">
                         <tr style="border-bottom: 2px solid rgba(255,255,255,0.2); color:#fbbf24; font-weight:bold;">
                             <th style="padding:10px;">Days</th>
                             <th style="padding:10px;">Target Topic / Remedial Action</th>
@@ -1522,12 +1372,25 @@
                         </tr>
                     </table>
                 `;
-            }
-            document.getElementById('ai-study-table').innerHTML = planHtml;
-            nav('p-analytics');
+                document.getElementById('ai-study-table').innerHTML = planHtml;
+                nav('p-analytics');
+            });
         }
 
-        function initDB() { console.log("System DB Engine Online."); }
+        function initDB() {
+            console.log("System Initializing...");
+            initOfflineAIEngine();
+            localforage.getItem('student_profile').then(profile => {
+                if(profile && profile.name) {
+                    loadDashboardWithProfile(profile);
+                }
+            });
+            pushLog('p-login');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initDB();
+        });
     </script>
 </body>
 </html>
