@@ -493,6 +493,47 @@ document.addEventListener('DOMContentLoaded',()=>{
 })();
 </script>
 
+
+<style>
+/* ለአጠቃላይ ገጹ ማስተካከያ */
+.page {
+    width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+/* ካርዱ በተለያዩ መሳሪያዎች መጠን እንዲቀያየር */
+.card {
+    width: 95% !important;        /* ስልክ ላይ */
+    max-width: 1400px !important; /* ኮምፒውተር ላይ */
+    margin: 2vh auto !important;
+    padding: 3vh !important;
+    background: var(--card-bg) !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+}
+
+/* ፕሮጀክተር/ፕላዝማ ላይ ሲሆን በጣም እንዲለጠጥ */
+@media (min-width: 1600px) {
+    .card {
+        max-width: 90% !important;
+        padding: 5vh !important;
+    }
+}
+
+/* ስልክ ላይ ሲሆን */
+@media (max-width: 600px) {
+    .card {
+        width: 98% !important;
+        padding: 15px !important;
+    }
+}
+</style>
+
 </head>
 <body>
 
