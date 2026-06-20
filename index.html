@@ -271,11 +271,237 @@
             body { padding: 4vh 10vw; }
             .card { max-width: 1200px; margin-left: auto; margin-right: auto; }
         }
-    </style>
+    
+.main-header{position:sticky;top:0;width:100%;display:flex;align-items:center;gap:15px;padding:15px 20px;z-index:10000}
+.header-title{margin:0;flex:1;text-align:center}
+.global-back-btn{position:static !important}
+
+html{font-size:clamp(14px,1vw + 10px,24px)}
+body{font-size:1rem}
+h1{font-size:clamp(1.8rem,4vw,4rem)}
+h2{font-size:clamp(1.5rem,3vw,3rem)}
+h3{font-size:clamp(1.2rem,2.5vw,2.5rem)}
+button,input,select,textarea{font-size:clamp(.9rem,1.2vw,1.4rem)}
+
+</style>
+
+<style>
+/* Responsive based on phone design */
+body{max-width:430px;margin:0 auto;width:100%;}
+@media (min-width:431px){
+ body{zoom:1;}
+}
+.main-header,.header,header{display:flex;justify-content:center;align-items:center}
+.sidebar,.menu,.details-panel{text-align:center}
+button,i,.icon,.menu-item{text-align:center}
+</style>
+
+
+<style>
+html,body{
+ width:100%;
+ max-width:none !important;
+ margin:0;
+ padding:0;
+ overflow-x:hidden;
+}
+.container,.main-container,.content,.dashboard,.app{
+ width:100% !important;
+ max-width:100% !important;
+ margin:0 auto;
+}
+.icon-grid,.menu-grid,.dashboard-grid{
+ display:grid !important;
+ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:20px;
+ width:100%;
+}
+.icon,.menu-item,.card{
+ text-align:center;
+ justify-content:center;
+ align-items:center;
+}
+@media(min-width:1920px){
+ html{font-size:22px;}
+}
+@media(min-width:1200px) and (max-width:1919px){
+ html{font-size:18px;}
+}
+@media(max-width:1199px){
+ html{font-size:16px;}
+}
+</style>
+
+
+<style>
+body{width:100%;max-width:none !important;margin:0 !important;}
+.container,.main-content,.content,.dashboard{max-width:none !important;width:100% !important;}
+@media(min-width:900px){
+.menu,.sidebar,.nav-list,.subject-list{
+display:flex !important;
+flex-direction:column !important;
+align-items:flex-start !important;
+justify-content:flex-start !important;
+}
+}
+</style>
+
+<style>
+html{font-size:clamp(14px,1vw + 12px,24px);}
+body{width:100%;max-width:none;display:block;padding:1rem;}
+.page{width:100%;max-width:none;}
+.grid{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr)) !important;gap:16px !important;}
+.card{width:100%;}
+@media (min-width:1200px){
+ .grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;}
+}
+</style>
+<script>
+function triggerGlobalBack(){
+ const active=document.querySelector('.page.active');
+ const first=document.getElementById('login-page')||document.getElementById('password-page')||document.getElementById('home-page');
+ if(active&&first&&active===first){return;}
+ if(history.length>1){window.history.back();}
+ else{
+   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+   if(first) first.classList.add('active');
+ }
+ updateBackButton();
+}
+function updateBackButton(){
+ const btn=document.getElementById('global-back-button'); if(!btn) return;
+ const active=document.querySelector('.page.active');
+ const first=document.getElementById('login-page')||document.getElementById('password-page')||document.getElementById('home-page');
+ btn.style.display=(active&&first&&active===first)?'none':'inline-block';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('#global-back-button,.global-back-btn').forEach(btn=>btn.onclick=triggerGlobalBack);
+ setInterval(updateBackButton,500); updateBackButton();
+});
+</script>
+
+<style>
+/* 100% Far Left Aligned Back Button with explicit layout reset */
+.app-inline-back-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    background: #cbd5e1 !important;
+    color: #1e293b !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-top: 5px !important;
+    margin-bottom: 25px !important;
+    margin-left: 0 !important;      /* Forces it to touch the absolute left margin */
+    margin-right: auto !important;  /* Pushes all space to the right */
+    float: left !important;         /* Ultimate alignment backup */
+    clear: both !important;
+    text-align: left !important;
+    transition: all 0.2s ease;
+}
+.app-inline-back-btn:hover {
+    background: #94a3b8 !important;
+    color: #0f172a !important;
+}
+/* Flex-container wrapper fixing for elements */
+.card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+}
+</style>
+<script>
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Safe injection function
+        const injectButtons = () => {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                if (page.id !== 'p-login' && page.id !== 'password-page' && page.id !== 'login-page') {
+                    const cardContainer = page.querySelector('.card') || page;
+                    if (!cardContainer.querySelector('.app-inline-back-btn')) {
+                        const btn = document.createElement('button');
+                        btn.className = 'app-inline-back-btn';
+                        btn.type = 'button';
+                        btn.innerHTML = (window.currentLanguage === 'en') ? '← Back' : '← ተመለስ';
+                        btn.onclick = function(e) {
+                            e.preventDefault();
+                            if (typeof goBackPage === 'function') { goBackPage(); }
+                            else { window.history.back(); }
+                        };
+                        if (cardContainer.firstChild) {
+                            cardContainer.insertBefore(btn, cardContainer.firstChild);
+                        } else {
+                            cardContainer.appendChild(btn);
+                        }
+                    }
+                }
+            });
+        };
+
+        injectButtons();
+
+        // Robust crash-proof language listener
+        if (typeof changeLang === 'function') {
+            const originalChangeLang = changeLang;
+            window.changeLang = function(lang) {
+                window.currentLanguage = lang;
+                
+                // Create a dummy element to absorb crashes if old references are looked up
+                if (!document.getElementById('global-back-button')) {
+                    const dummy = document.createElement('div');
+                    dummy.id = 'global-back-button';
+                    dummy.style.display = 'none';
+                    document.body.appendChild(dummy);
+                }
+
+                try {
+                    originalChangeLang(lang);
+                } catch(err) {
+                    console.log("Absorbed original translation warning, continuing full synchronization...");
+                }
+
+                // Guarantee full system state sync
+                const dict = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : null;
+                if (dict) {
+                    const mappings = {
+                        'gate-title': dict.gate_title || 'የፈተና ዘርፍ ይምረጡ',
+                        'gate-subtitle': dict.gate_subtitle || '',
+                        'subj-title': dict.subj_title || 'የትምህርት ዓይነት',
+                        'year-title': dict.year_title || 'የፈተና ዓመተ ምህረት / ራውንድ',
+                        'gate-pdf-btn': dict.gate_pdf_btn || '📄 AI PDF EXAM',
+                        'gate-my-btn': dict.gate_my_btn || '📂 የእኔ ጥያቄዎች',
+                        'gate-ai-btn': dict.gate_ai_btn || '✨ AI EXAM'
+                    };
+                    Object.keys(mappings).forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.innerText = mappings[id];
+                    });
+                }
+
+                // Instantly update all injected back buttons to match translation state
+                document.querySelectorAll('.app-inline-back-btn').forEach(btn => {
+                    btn.innerHTML = (lang === 'en') ? '← Back' : '← ተመለስ';
+                });
+            };
+        }
+    });
+})();
+</script>
+
 </head>
 <body>
 
-    <button class="global-back-btn" id="global-back-button" onclick="triggerGlobalBack()">← ወደ ኋላ</button>
+    
+<header class="main-header">
+
+<h2 class="header-title">MMSS Exam System</h2>
+</header>
+
 
     <div class="settings-container" style="position: fixed; top: 20px; right: 25px; z-index: 10001; margin-bottom: 0;">
         <div class="settings-icon" onclick="toggleSettings()">⚙️</div>
@@ -1564,5 +1790,99 @@
             initDB();
         });
     </script>
+
+<script>
+function triggerGlobalBack(){
+ if(history.length>1){history.back();}
+ else{window.location.href='index.html';}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('[id="global-back-button"],.global-back-btn').forEach(b=>{
+   b.onclick=triggerGlobalBack;
+ });
+});
+</script>
+
+
+<script>
+(function(){
+window.__pageHistory=window.__pageHistory||[];
+function currentPage(){
+ return document.querySelector('.page.active');
+}
+function trackPage(){
+ const p=currentPage();
+ if(!p||!p.id) return;
+ const h=window.__pageHistory;
+ if(h.length===0||h[h.length-1]!==p.id){h.push(p.id);}
+}
+setInterval(trackPage,300);
+window.triggerGlobalBack=function(){
+ const h=window.__pageHistory||[];
+ if(h.length>1){
+   h.pop();
+   const prev=h[h.length-1];
+   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+   const el=document.getElementById(prev);
+   if(el) el.classList.add('active');
+   return;
+ }
+ if(window.history.length>1){window.history.back();}
+};
+})();
+</script>
+
+<script>
+(function(){
+let pageHistory=[];
+function activePage(){ return document.querySelector('.page.active'); }
+
+function rememberPage(){
+ const p=activePage();
+ if(!p) return;
+ const id=p.id;
+ if(pageHistory.length===0 || pageHistory[pageHistory.length-1]!==id){
+   pageHistory.push(id);
+ }
+}
+
+function goBackPage(){
+ if(pageHistory.length>1){
+   pageHistory.pop();
+   const prev=pageHistory[pageHistory.length-1];
+   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+   const target=document.getElementById(prev);
+   if(target) target.classList.add('active');
+ }
+}
+
+window.addEventListener('popstate',function(e){
+   goBackPage();
+});
+
+document.addEventListener('DOMContentLoaded',function(){
+   rememberPage();
+   setInterval(function(){
+      const p=activePage();
+      if(p){
+         const id=p.id;
+         if(pageHistory.length===0 || pageHistory[pageHistory.length-1]!==id){
+            pageHistory.push(id);
+            try{history.pushState({page:id},'',location.href);}catch(e){}
+         }
+      }
+   },300);
+
+   const btn=document.getElementById('global-back-button');
+   if(btn){
+      btn.addEventListener('click',function(ev){
+         ev.preventDefault();
+         history.back();
+      });
+   }
+});
+})();
+</script>
+
 </body>
 </html>
